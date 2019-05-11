@@ -18,18 +18,16 @@ const ChoreSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    child: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
+    // child: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'users'
+    // },
     date: {
         type: Date,
         default: Date.now
     }
 });
 
-
-//called 'chore', since walkthrough was singular tweet, but 'users' is plural, not sure
-const Chore = mongoose.model('chore', ChoreSchema);
+const Chore = mongoose.model('chores', ChoreSchema);
 
 module.exports = Chore;

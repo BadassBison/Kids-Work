@@ -9,17 +9,17 @@ const validateChoreInput = (data) => {
     data.title = validText(data.title) ? data.title : "";
 
     //not sure about this validation, numbers may come in as string from the json object
-    data.amount = typeof data.amount === "number" ? data.amount : "";
+    // data.amount = typeof data.amount === "number" ? data.amount : "";
 
-    if (!Validator.isEmpty(data.title)) {
+    if (Validator.isEmpty(data.title)) {
         errors.title = "Title is required";
     }
 
-    if (!Validator.isEmpty(data.body)) {
+    if (Validator.isEmpty(data.body)) {
         errors.body = "Body is required";
     }
 
-    if (!Validator.isEmpty(data.amount)) {
+    if (Validator.isEmpty(data.amount)) {
         errors.amount = "Amount is required";
     }
 
@@ -29,4 +29,4 @@ const validateChoreInput = (data) => {
     };
 };
 
-export default validateChoreInput;
+module.exports = validateChoreInput;
