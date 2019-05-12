@@ -14,5 +14,13 @@ This project was built over 5 days with a team of 4 developers.
 
 Sign up is for parents only. They will input their children and everyone will log in under one account. Log in has a form for parents or a form for children. Once logged in, parents will have the ability to see the full dashboard of the chores they have posted, the stats of all their children, and the total payouts for the bounties earned. Childrens dashboards will have full stats on completed chores and bounties earned over the course of weeks, months, or years.
 
-## Team Members
-Shawn Scott, Grant Paulson, Sean Kennealy, Vu Tran
+## Accomplished Over the Weekend
+
+The entire team spent the full weekend in a/A, first doing the MERN Stack curriculum, then building out user auth. By Monday morning we were completely through the entry point of our website and working on core features
+
+## Team Members and Work Break Down
+
+Shawn Scott - Project manager, overall design of the site, styling and frontend functionality
+Grant Paulson - Backend developer, api & routing
+Sean Kennealy - Frontend UX/UI, lead designer
+Vu Tran - React/Redux implementation, main component developer
