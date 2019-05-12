@@ -21,6 +21,9 @@ The entire team spent the full weekend in a/A, first doing the MERN Stack curric
 ## Team Members and Work Break Down
 
 Shawn Scott - Project manager, overall design of the site, styling and frontend functionality
+
 Grant Paulson - Backend developer, api & routing
+
 Sean Kennealy - Frontend UX/UI, lead designer
+
 Vu Tran - React/Redux implementation, main component developer
