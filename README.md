@@ -8,7 +8,7 @@ This project was built over 5 days with a team of 4 developers.
 
 ## Technologies 
 
-`HTML5` / `CSS3 & SCSS` / `JavaScript` / `MongoDB` / `Express.js` / `React` / `Redux` / `Node.js` 
+`HTML5` / `CSS3 & SCSS` / `JavaScript` / `MongoDB` / `Express.js` / `React` / `Redux` / `Node.js` / `Bulma.io` / `Anime.js`
 
 ## Features
 
@@ -21,9 +21,22 @@ The entire team spent the full weekend in a/A, first doing the MERN Stack curric
 ## Team Members and Work Break Down
 
 Shawn Scott - Project manager, overall design of the site, styling and frontend functionality
+Saturday | Sunday | Monday | Tuesday
+---------|--------|--------|--------
+MERN Learning | Anime.js | UX implementation | Overall UX for whole app
 
 Grant Paulson - Backend developer, api & routing
+Saturday | Sunday | Monday | Tuesday
+---------|--------|--------|--------
+MERN Learning | xxxx | xxxx | xxxx
 
-Sean Kennealy - Frontend UX/UI, lead designer
+Sean Kennealy - Backend UX/UI, schema control
+Saturday | Sunday | Monday | Tuesday
+---------|--------|--------|--------
+MERN Learning | xxxx | xxxx | xxxx
 
 Vu Tran - React/Redux implementation, main component developer
+Saturday | Sunday | Monday | Tuesday
+---------|--------|--------|--------
+MERN Learning | Form Components | Main App Components | Payout Components
+xxxx | User Auth | Chores | Overall functionality between components
