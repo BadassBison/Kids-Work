@@ -22,25 +22,25 @@ The entire team spent the full weekend in a/A, first doing the MERN Stack curric
 
 ### Shawn Scott - Project manager, overall design of the site, styling and frontend functionality
 
-Saturday | Sunday | Monday | Tuesday
----------|--------|--------|--------
+Saturday | Sunday | Monday | Tuesday | Wednesday
+---------|--------|--------|---------|----------
 MERN Learning | Anime.js | UX implementation | Overall UX for whole app
 
 ### Grant Paulson - Backend developer, api & routing
 
-Saturday | Sunday | Monday | Tuesday
----------|--------|--------|--------
+Saturday | Sunday | Monday | Tuesday | Wednesday
+---------|--------|--------|---------|----------
 MERN Learning | xxxx | xxxx | xxxx
 
 ### Sean Kennealy - Backend UX/UI, schema control
 
-Saturday | Sunday | Monday | Tuesday
----------|--------|--------|--------
+Saturday | Sunday | Monday | Tuesday | Wednesday
+---------|--------|--------|---------|----------
 MERN Learning | xxxx | xxxx | xxxx
 
 ### Vu Tran - React/Redux implementation, main component developer
 
-Saturday | Sunday | Monday | Tuesday
----------|--------|--------|--------
+Saturday | Sunday | Monday | Tuesday | Wednesday
+---------|--------|--------|---------|----------
 MERN Learning | Form Components | Main App Components | Payout Components
 xxxx | User Auth | Chores | Overall functionality between components
