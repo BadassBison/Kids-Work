@@ -7,34 +7,39 @@ import SubTitle from '../../display_components/sub_title/sub_title'
 
 class LoginForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
+            firstName: '',
             familyName: '',
             password: '',
             errors: ''
-        }
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.update = this.update.bind(this);
     }
 
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value
-        })
+        });
     }
 
     handleSubmit(e) {
-        e.preventDefault()
-        let user = {
-            familyName: this.state.familyName,
-            password: this.state.password
-        }
+        e.preventDefault();
+        // let user = {
+        //     fir
+        //     familyName: this.state.familyName,
+        //     password: this.state.password
+        // };
 
+        this.props.loginParent(this.state);
         // user login action still need to implemented below
         // this.props.logIn(user, this.props.history)
 
-        this.setState({
-            familyName: user.familyName,
-            password: user.password
-        })
+        // this.setState({
+        //     familyName: user.familyName,
+        //     password: user.password
+        // })
 
     }
 
@@ -47,8 +52,9 @@ class LoginForm extends React.Component {
                         <SubTitle subTitle="Sign In" />
                     </div>
                 </div>
-                <form className="login-form">
-                    <UserField familyName={this.props.familyName} onChange={this.update("familyName")} />
+                <form className="login-form" onSubmit={this.handleSubmit}>
+                    <UserField value={this.props.firstName} onChange={this.update("firstName")} placeholder="First Name"/>
+                    <UserField value={this.props.familyName} onChange={this.update("familyName")} placeholder="Family Name"/>
                     <PasswordField password={this.props.password} onChange={this.update("password")} passwordType={`Password`} />
                     <SubmitField formType="Sign In" />
                 </form>
