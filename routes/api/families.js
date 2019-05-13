@@ -73,6 +73,7 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/parentLogin', (req, res) => {
+    debugger;
     const { errors, isValid } = validateLoginInput(req.body);
 
     if (!isValid) {
@@ -95,8 +96,7 @@ router.post('/parentLogin', (req, res) => {
                         const payload = {
                             id: family.id,
                             familyName: family.familyName,
-                            firstName: family.firstName,
-                            isParent: true
+                            firstName: family.firstName
                         };
                         jwt.sign(
                             payload,
@@ -105,6 +105,10 @@ router.post('/parentLogin', (req, res) => {
                             (err, token) => {
                                 res.json({
                                     success: true,
+                                    id: family.id,
+                                    familyName: family.familyName,
+                                    firstName: family.firstName,
+                                    isParent: true,
                                     token: "Bearer " + token
                                 });
                             }
@@ -151,8 +155,7 @@ router.post('/childLogin', (req, res) => {
                         const payload = {
                             id: loginChild.id,
                             familyName: loginChild.familyName,
-                            firstName: loginChild.firstName,
-                            isParent: false
+                            firstName: loginChild.firstName
                         };
                         jwt.sign(
                             payload,
@@ -161,6 +164,10 @@ router.post('/childLogin', (req, res) => {
                             (err, token) => {
                                 res.json({
                                     success: true,
+                                    isParent: false,
+                                    id: loginChild.id,
+                                    familyName: loginChild.familyName,
+                                    firstName: loginChild.firstName,
                                     token: "Bearer " + token
                                 });
                             }

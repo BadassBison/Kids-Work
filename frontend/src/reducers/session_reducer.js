@@ -1,10 +1,21 @@
-import { RECEIVE_FAMILY_LOGOUT } from '../actions/session_actions';
+import { 
+    RECEIVE_FAMILY_LOGOUT, 
+    RECEIVE_CURRENT_USER
+} from '../actions/session_actions';
 
 const initialState = {};
 
 export default function(state = initialState, action) {
     Object.freeze(state);
+
     switch (action.type) {
+        case RECEIVE_CURRENT_USER:
+            debugger;
+            return {
+                ...state,
+                isAuthenticated: !!action.userData,
+                user: action.userData
+            };
         case RECEIVE_FAMILY_LOGOUT:
             return {
                 isAuthenticated: false,
