@@ -12,7 +12,6 @@ router.get("/", (req, res) =>{
 });
 
 router.post('/signup', (req, res) => {
-    
     const { errors, isValid } = validateSignupInput(req.body);
 
     if (!isValid) {
@@ -60,8 +59,12 @@ router.post('/signup', (req, res) => {
                                     { expiresIn: 3600 },
                                     (err, token) => {
                                         res.json({
+                                            id: family.id,
+                                            familyName: family.familyName,
+                                            firstName: family.firstName,
+                                            isParent: true,
                                             success: true,
-                                            token: "Bearer " + token
+                                            token: 'Bearer ' + token
                                         });
                                     }
                                 );
@@ -96,7 +99,8 @@ router.post('/parentLogin', (req, res) => {
                         const payload = {
                             id: family.id,
                             familyName: family.familyName,
-                            firstName: family.firstName
+                            firstName: family.firstName,
+                            isParent: true
                         };
                         jwt.sign(
                             payload,
@@ -104,12 +108,12 @@ router.post('/parentLogin', (req, res) => {
                             { expiresIn: 3600 },
                             (err, token) => {
                                 res.json({
-                                    success: true,
                                     id: family.id,
                                     familyName: family.familyName,
                                     firstName: family.firstName,
                                     isParent: true,
-                                    token: "Bearer " + token
+                                    success: true,
+                                    token: 'Bearer ' + token
                                 });
                             }
                         );
@@ -144,6 +148,7 @@ router.post('/childLogin', (req, res) => {
                     loginChild = child;
                 }
             });
+
             if (!loginChild) {
                 errors.firstName = "This child does not exist";
                 return res.status(404).json(errors);
@@ -153,9 +158,10 @@ router.post('/childLogin', (req, res) => {
                 .then(isMatch => {
                     if (isMatch) {
                         const payload = {
-                            id: loginChild.id,
-                            familyName: loginChild.familyName,
-                            firstName: loginChild.firstName
+                            id: family.id,
+                            familyName: family.familyName,
+                            firstName: family.firstName,
+                            isParent: false
                         };
                         jwt.sign(
                             payload,
@@ -163,12 +169,12 @@ router.post('/childLogin', (req, res) => {
                             { expiresIn: 3600 },
                             (err, token) => {
                                 res.json({
-                                    success: true,
+                                    id: family.id,
+                                    familyName: family.familyName,
+                                    firstName: family.firstName,
                                     isParent: false,
-                                    id: loginChild.id,
-                                    familyName: loginChild.familyName,
-                                    firstName: loginChild.firstName,
-                                    token: "Bearer " + token
+                                    success: true,
+                                    token: 'Bearer ' + token
                                 });
                             }
                         );

@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const validateChoreInput = require('../../validation/chores');
-const Chore = require('../../models/Chore');
-
+const Family = require('../../models/Family');
 
 router.get('/', (req, res) => {
     Chore.find()
@@ -18,25 +17,78 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(400).json(err));
 });
 
+//child login has correct jwt credentials to post
 router.post("/",
     passport.authenticate("jwt", { session: false}),
     (req, res) => {
-        const { isValid, errors } = validateChoreInput(req.body);
 
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-    const newChore = new Chore({
-        title: req.body.title,
-        body: req.body.body,
-        amount: req.body.amount,
-        parent: req.family.id
-        //lookup by child name here?
-        // child: req.body.child
-    });
+        Family.findById(req.user.id)
+            .then (family => {
+                const chore = req.body;
+                let child;
+                for (let maybeChild of family.children) {
+                    if (maybeChild.firstName === chore.childName) {
+                        child = maybeChild;
+                    }
+                }
+                if (!child) {
+                    errors.childName = "Child name not found";
+                    return res.status(400).json(errors);
+                } else {
+                    const { errors, isValid } = validateChoreInput(chore);
 
-    newChore.save()
-        .then( chore => res.json(chore));
+                    if (!isValid) {
+                        return res.status(400).json(errors);
+                    }
+
+                    child.chores.push(chore);
+                    family.markModified(`children[${family.children.length - 1}].chores`);
+                    family.save()
+                        .then(family => {
+                            return res.json(family);
+                        })
+                        .catch(err => console.log(err));
+                }
+                
+            })
+            .catch(err => console.log(err));
+        
 });
+
+// router.patch("/:id",
+//     passport.authenticate("jwt", { session: false}),
+//     (req, res) => {
+//         Family.findById(req.user.id)
+//             .then (family => {
+//                 let child;
+//                 for (let maybeChild of family.children) {
+//                     if (maybeChild.firstName === chore.childName) {
+//                         child = maybeChild;
+//                     }
+//                 }
+//                 if (!child) {
+//                     errors.childName = "Child name not found";
+//                     return res.status(400).json(errors);
+//                 } else {
+//                     debugger
+//                     Family.find()
+//                         .where()
+//                     for (let maybeChild of family.children) {
+//                         if (maybeChild.firstName === chore.childName) {
+//                             child = maybeChild;
+//                         }
+//                     }
+//                     child.chores.push(chore);
+//                     family.markModified(`children[${family.children.length - 1}].chores`);
+//                     family.save()
+//                         .then(family => {
+//                             return res.json(family);
+//                         })
+//                         .catch(err => console.log(err));
+//                 }
+//             })
+//             .catch(err => console.log(err));
+        
+// });
 
 module.exports = router;
