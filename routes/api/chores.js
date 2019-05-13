@@ -30,7 +30,7 @@ router.post("/",
         title: req.body.title,
         body: req.body.body,
         amount: req.body.amount,
-        parent: req.user.id
+        parent: req.family.id
         //lookup by child name here?
         // child: req.body.child
     });

@@ -16,11 +16,11 @@ const ChoreSchema = new Schema({
     },
     parent: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'families'
     },
     // child: {
     //     type: Schema.Types.ObjectId,
-    //     ref: 'users'
+    //     ref: 'families'
     // },
     date: {
         type: Date,
