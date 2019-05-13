@@ -15,7 +15,7 @@ const Splash = () => {
                     <div className="logo-container">
                         <Link 
                             to="/"
-                            className="navbar-item">
+                            className="">
                             LOGO
                             {/* <img className="splash-logo" src={logo} alt=""/> */}
                         </Link>
