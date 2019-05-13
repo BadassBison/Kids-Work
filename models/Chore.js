@@ -12,22 +12,25 @@ const ChoreSchema = new Schema({
     },
     amount: {
         type: Number,
-        required: true
+        required: true,
+        min: [0, "Thats messed up"]
     },
-    parent: {
-        type: Schema.Types.ObjectId,
-        ref: 'families'
+    deadline: {
+        type: Date
     },
-    // child: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'families'
-    // },
+    priority: {
+        type: Boolean,
+        default: false
+    },
+    completed: {
+        type: String,
+        enum: ["ASSIGNED", "PENDING_REVIEW", "COMPLETED"],
+        default: "ASSIGNED"
+    },
     date: {
         type: Date,
         default: Date.now
     }
 });
 
-const Chore = mongoose.model('chores', ChoreSchema);
-
-module.exports = Chore;
+module.exports = ChoreSchema;

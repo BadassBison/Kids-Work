@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // TESTS
-    // window.dispatch = store.dispatch;
-    // window.getState = store.getState;
-    // window.loginChild = loginChild;
-    // window.loginParent = loginParent;
-    // window.signup = signup;
+    window.dispatch = store.dispatch;
+    window.getState = store.getState;
+    window.loginChild = loginChild;
+    window.loginParent = loginParent;
+    window.signup = signup;
     // END
     
     const root = document.getElementById('root');

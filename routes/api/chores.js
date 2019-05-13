@@ -18,6 +18,7 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(400).json(err));
 });
 
+//child login has correct jwt credentials to post
 router.post("/",
     passport.authenticate("jwt", { session: false}),
     (req, res) => {

@@ -12,7 +12,6 @@ router.get("/", (req, res) =>{
 });
 
 router.post('/signup', (req, res) => {
-    
     const { errors, isValid } = validateSignupInput(req.body);
 
     if (!isValid) {
@@ -145,6 +144,7 @@ router.post('/childLogin', (req, res) => {
                     loginChild = child;
                 }
             });
+
             if (!loginChild) {
                 errors.firstName = "This child does not exist";
                 return res.status(404).json(errors);
