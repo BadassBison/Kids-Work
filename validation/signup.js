@@ -1,5 +1,6 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
+const validateChoreInput = require('./chores');
 
 module.exports = function validateSignupInput(data) {
     let errors = {};
@@ -7,7 +8,8 @@ module.exports = function validateSignupInput(data) {
     data.firstName = validText(data.firstName) ? data.firstName : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
-    data.children = typeof data.children === "array" ? data.children : [];
+
+    data.children = typeof data.children === "object" ? data.children : [];
     // data.children = JSON.parse(data.children);
 
     if (!Validator.isLength(data.firstName, { min: 2, max: 30})) {
@@ -65,6 +67,7 @@ module.exports = function validateSignupInput(data) {
         if (Validator.isEmpty(child.password2)) {
             errors[`childPassword2-${i}`] = 'Confirm password required';
         }
+
     });
 
     return {

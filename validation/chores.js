@@ -6,10 +6,9 @@ const validateChoreInput = (data) => {
 
     data.title = validText(data.title) ? data.title : "";
     data.body = validText(data.body) ? data.body : "";
-    data.title = validText(data.title) ? data.title : "";
-
-    //not sure about this validation, numbers may come in as string from the json object
     // data.amount = typeof data.amount === "number" ? data.amount : "";
+
+    //checkup here on date validations, and the rest
 
     if (Validator.isEmpty(data.title)) {
         errors.title = "Title is required";
@@ -19,9 +18,9 @@ const validateChoreInput = (data) => {
         errors.body = "Body is required";
     }
 
-    if (Validator.isEmpty(data.amount)) {
-        errors.amount = "Amount is required";
-    }
+    // if (Validator.isEmpty(data.amount)) {
+    //     errors.amount = "Amount is required";
+    // }
 
     return {
         errors,

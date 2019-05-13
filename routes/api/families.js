@@ -12,7 +12,6 @@ router.get("/", (req, res) =>{
 });
 
 router.post('/signup', (req, res) => {
-    
     const { errors, isValid } = validateSignupInput(req.body);
 
     if (!isValid) {
@@ -63,7 +62,9 @@ router.post('/signup', (req, res) => {
                                             id: family.id,
                                             familyName: family.familyName,
                                             firstName: family.firstName,
-                                            isParent: true
+                                            isParent: true,
+                                            success: true,
+                                            token: 'Bearer ' + token
                                         });
                                     }
                                 );
@@ -110,7 +111,9 @@ router.post('/parentLogin', (req, res) => {
                                     id: family.id,
                                     familyName: family.familyName,
                                     firstName: family.firstName,
-                                    isParent: true
+                                    isParent: true,
+                                    success: true,
+                                    token: 'Bearer ' + token
                                 });
                             }
                         );
@@ -145,6 +148,7 @@ router.post('/childLogin', (req, res) => {
                     loginChild = child;
                 }
             });
+
             if (!loginChild) {
                 errors.firstName = "This child does not exist";
                 return res.status(404).json(errors);
@@ -168,7 +172,9 @@ router.post('/childLogin', (req, res) => {
                                     id: family.id,
                                     familyName: family.familyName,
                                     firstName: family.firstName,
-                                    isParent: false
+                                    isParent: false,
+                                    success: true,
+                                    token: 'Bearer ' + token
                                 });
                             }
                         );
