@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const ChoreSchema = require('./Chore');
+const ChoreSchema = require('./ChoreSchema');
 
 const ChildSchema = new Schema({
     firstName: {

@@ -6,7 +6,7 @@ const validateChoreInput = (data) => {
 
     data.title = validText(data.title) ? data.title : "";
     data.body = validText(data.body) ? data.body : "";
-    data.amount = typeof data.amount === "number" ? data.amount : "";
+    // data.amount = typeof data.amount === "number" ? data.amount : "";
 
     //checkup here on date validations, and the rest
 
@@ -18,9 +18,9 @@ const validateChoreInput = (data) => {
         errors.body = "Body is required";
     }
 
-    if (Validator.isEmpty(data.amount)) {
-        errors.amount = "Amount is required";
-    }
+    // if (Validator.isEmpty(data.amount)) {
+    //     errors.amount = "Amount is required";
+    // }
 
     return {
         errors,

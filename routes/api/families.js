@@ -62,7 +62,9 @@ router.post('/signup', (req, res) => {
                                             id: family.id,
                                             familyName: family.familyName,
                                             firstName: family.firstName,
-                                            isParent: true
+                                            isParent: true,
+                                            success: true,
+                                            token: 'Bearer ' + token
                                         });
                                     }
                                 );
@@ -109,7 +111,9 @@ router.post('/parentLogin', (req, res) => {
                                     id: family.id,
                                     familyName: family.familyName,
                                     firstName: family.firstName,
-                                    isParent: true
+                                    isParent: true,
+                                    success: true,
+                                    token: 'Bearer ' + token
                                 });
                             }
                         );
@@ -168,7 +172,9 @@ router.post('/childLogin', (req, res) => {
                                     id: family.id,
                                     familyName: family.familyName,
                                     firstName: family.firstName,
-                                    isParent: false
+                                    isParent: false,
+                                    success: true,
+                                    token: 'Bearer ' + token
                                 });
                             }
                         );
