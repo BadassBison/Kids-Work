@@ -29,10 +29,15 @@
     padding: 0 40px 10px 40px;
 }
 
+.logo-container {
+    width: 20%
+}
+
 .splash-nav-title {
     display: block;
     text-align: center;
     color: white;
+    width: 60%;
 }
 
 .splash-nav h1 {
@@ -53,11 +58,25 @@
 
 .splash-nav-links-container {
     display: flex;
+    justify-content: flex-end;
+    width: 20%;
 }
 
 .splash-nav-link {
     margin: 5px;
+    background: whitesmoke;
+    border: 1px solid #DFDCE3;
+    padding: 2px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Gloria Hallelujah', cursive;
+    outline: none;
+}
+
+.splash-nav-link:hover {
     background: #F78733;
+    color: white;
 }
 
 .splash-container {
@@ -94,12 +113,27 @@
 
 .splash-info-box {
     background: white;
-    height: 80%;
+    height: 50%;
     width: 80%;
     margin: auto;
 }
 
-@media (max-width: 420px) {
+.p-container p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 40px;
+    text-align: center;
+}
+
+@media (max-width: 1150px) {
+    .p-container p {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 664px) {
     .splash-nav-container {
         height: 70px;
     }
@@ -109,6 +143,14 @@
     }
 
     .splash-nav h3 {
+        font-size: 10px;
+    }
+
+    .p-container p {
+        font-size: 12px;
+    }
+
+    .splash-nav-link {
         font-size: 10px;
     }
 }

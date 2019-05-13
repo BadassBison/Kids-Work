@@ -1,32 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from './images/logo.png';
+// import logo from './images/logo.png';
 import kidChores1 from './images/kid-chores-1.jpg';
 import kidChores2 from './images/kid-chores-2.jpg';
 import kidChores3 from './images/kid-chores-3.jpg';
+import kidsMoney from './images/kids-with-money.jpg';
 import './splash.css';
-import SubmitField from '../input_components/submit_field/submit';
 
 const Splash = () => {
     return (
         <main className="splash-body">
             <nav className="splash-nav-container">
                 <div className="splash-nav">
-                    <Link 
-                        to="/"
-                        className="navbar-item">
-                        LOGO
-                        {/* <img className="splash-logo" src={logo} alt=""/> */}
-                    </Link>
-                    {/* <Link
-                        to="/"
-                        className=""
-                        aria-label="menu"
-                        aria-expanded="false">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                    </Link> */}
+                    <div className="logo-container">
+                        <Link 
+                            to="/"
+                            className="navbar-item">
+                            LOGO
+                            {/* <img className="splash-logo" src={logo} alt=""/> */}
+                        </Link>
+                        {/* <Link
+                            to="/"
+                            className=""
+                            aria-label="menu"
+                            aria-expanded="false">
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                        </Link> */}
+                    </div>
 
                     <div className="splash-nav-title">
                         <h1>Child Labor</h1>
@@ -36,8 +38,13 @@ const Splash = () => {
                 
                     <div className="splash-nav-links-container">
                         <button 
-                            className="splash-nav-link" 
-                        />
+                            className="splash-nav-link"
+                            // onClick={}
+                            >Log In</button>
+                        <button 
+                            className="splash-nav-link"
+                            // onClick={}
+                            >Sign Up</button>
                     </div>
                 </div>
             </nav>
@@ -46,20 +53,34 @@ const Splash = () => {
                 <div className="columns splash-info-container">
                     <img className="column is-half splash-background-photo" src={kidChores1} alt=""/>
                     <div className="column is-half p-container">
-                        <p className="splash-info-box"></p>
+                        <p className="splash-info-box">
+                            Parents assign chores to their children
+                        </p>
                     </div>
                 </div>
                 <div className="columns splash-info-container">
                     <div className="column is-half p-container">
-                        <p className="splash-info-box"></p>
+                        <p className="splash-info-box">
+                            Children complete the chores
+                        </p>
                     </div>
                     <img className="column is-half splash-background-photo" src={kidChores2} alt=""/>
                 </div>
                 <div className="columns splash-info-container">
                     <img className="column is-half splash-background-photo" src={kidChores3} alt=""/>
                     <div className="column is-half p-container">
-                        <p className="splash-info-box"></p>
+                        <p className="splash-info-box">
+                             and have fun doing it
+                        </p>
                     </div>
+                </div>
+                <div className="columns splash-info-container">
+                    <div className="column is-half p-container">
+                        <p className="splash-info-box">
+                            Parents reward the children
+                        </p>
+                    </div>
+                    <img className="column is-half splash-background-photo" src={kidsMoney} alt=""/>
                 </div>
             </div>
         </main>
