@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
-const users = require("./routes/api/users");
+const families = require("./routes/api/families");
 const chores = require("./routes/api/chores");
-const User = require("./models/User");
+const Family = require("./models/Family");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 require('./config/passport')(passport);
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 
-app.use("/api/users", users);
+app.use("/api/families", families);
 app.use("/api/chores", chores);
 
 const port = process.env.PORT || 5000;

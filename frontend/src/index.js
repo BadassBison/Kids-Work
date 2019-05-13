@@ -3,25 +3,34 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
-import { setAuthToken } from './util/session_api_util';
-import { logout } from './actions/session_actions';
+import { setAuthToken, loginParent } from './util/session_api_util';
+import { loginChild, logout, signup } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
     if (localStorage.jwtToken) {
         setAuthToken(localStorage.jwtToken);
-        const decodedUser = jwt_decode(localStorage.jwtToken);
-        const preloadedState = { session: { isAuthenticated: true, user: decodedUser } };
+        const decodedFamily = jwt_decode(localStorage.jwtToken);
+        const preloadedState = { session: { isAuthenticated: true, family: decodedFamily } };
         store = configureStore(preloadedState);
         const currentTime = Date.now() / 1000;
 
-        if (decodedUser.exp < currentTime) {
+        if (decodedFamily.exp < currentTime) {
             store.dispatch(logout());
             window.location.href = '/login';
         } 
     } else {
             store = configureStore({});
-        }  
+    }
+    
+    // TESTS
+    window.dispatch = store.dispatch;
+    window.getState = store.getState;
+    window.loginChild = loginChild;
+    window.loginParent = loginParent;
+    window.signup = signup;
+    // END
+    
     const root = document.getElementById('root');
 
     ReactDOM.render(<Root store={store} />, root);
