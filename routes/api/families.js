@@ -73,7 +73,6 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/parentLogin', (req, res) => {
-    debugger;
     const { errors, isValid } = validateLoginInput(req.body);
 
     if (!isValid) {
