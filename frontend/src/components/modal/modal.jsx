@@ -1,6 +1,4 @@
 import React from 'react';
-import SignupModal from './signup_modal';
-import LoginModal from './login_modal';
 import './modal.css';
 
 const Modal = (props) => {
@@ -11,10 +9,10 @@ const Modal = (props) => {
     let component;
     switch (props.modal.modalType) {
         case "signup":
-            component = <SignupModal />;
+            // component = <SignupModal />;
             break;
         case "login":
-            component = <LoginModal />;
+            // component = <LoginModal />;
             break;
         default:
             return null;
