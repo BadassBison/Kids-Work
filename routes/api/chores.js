@@ -21,11 +21,6 @@ router.get('/:id', (req, res) => {
 router.post("/",
     passport.authenticate("jwt", { session: false}),
     (req, res) => {
-        const { isValid, errors } = validateChoreInput(req.body);
-
-        if (!isValid) {
-            return res.status(400).json(errors);
-        }
 
         Family.findById(req.user.id)
             .then (family => {
@@ -55,8 +50,45 @@ router.post("/",
                         .catch(err => console.log(err));
                 }
                 
-        });
+            })
+            .catch(err => console.log(err));
         
 });
+
+// router.patch("/:id",
+//     passport.authenticate("jwt", { session: false}),
+//     (req, res) => {
+//         Family.findById(req.user.id)
+//             .then (family => {
+//                 let child;
+//                 for (let maybeChild of family.children) {
+//                     if (maybeChild.firstName === chore.childName) {
+//                         child = maybeChild;
+//                     }
+//                 }
+//                 if (!child) {
+//                     errors.childName = "Child name not found";
+//                     return res.status(400).json(errors);
+//                 } else {
+//                     debugger
+//                     Family.find()
+//                         .where()
+//                     for (let maybeChild of family.children) {
+//                         if (maybeChild.firstName === chore.childName) {
+//                             child = maybeChild;
+//                         }
+//                     }
+//                     child.chores.push(chore);
+//                     family.markModified(`children[${family.children.length - 1}].chores`);
+//                     family.save()
+//                         .then(family => {
+//                             return res.json(family);
+//                         })
+//                         .catch(err => console.log(err));
+//                 }
+//             })
+//             .catch(err => console.log(err));
+        
+// });
 
 module.exports = router;
