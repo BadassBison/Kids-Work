@@ -3,9 +3,11 @@ import UserField from '../../input_components/user_field/user_field'
 import EmailField from '../../input_components/email_field/email_field'
 import PasswordField from '../../input_components/password_field/password_field'
 import SubmitField from '../../input_components/submit_field/submit'
-import ChildButtons from '../../input_components/button_field/child_button/child_buttons'
 import Title from '../../display_components/title/title'
 import SubTitle from '../../display_components/sub_title/sub_title'
+import AddChildButton from '../../input_components/button_field/child_button/add_child_button'
+import MinusChildButton from '../../input_components/button_field/child_button/minus_child_button'
+import ChildInputs from '../child/add_child_form';
 
 class SignUpForm extends React.Component {
     constructor(props) {
@@ -14,22 +16,44 @@ class SignUpForm extends React.Component {
             email: '',
             firstName: '',
             familyName: '',
-            children: [],
+            children: [{ name: '', childPassword: '', childConfirmPassword: '' }],
             password: '',
             password2: '',
             formType: 'Sign Up'
             // errors will be slice of the local state
             // errors: {} 
         }
-        this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
+        // this.handleChange = this.handleChange.bind(this)
     }
 
-    update(field) {
-        return e => this.setState({
-            [field]: e.currentTarget.value
-        })
+    handleChange = (e) => {
+        if (["name", "childPassword", "childConfirmPassword"].includes(e.target.className)) {
+            let children = [...this.state.children]
+            children[e.target.dataset.id][e.target.className] = e.target.value.toUpperCase()
+            this.setState({ children }, () => console.log(this.state.children))
+        } else {
+            this.setState( {[e.target.name]: e.target.value.toUpperCase()} )
+        }
     }
+
+    addChild = (e) => {
+        e.preventDefault()
+        this.setState((prevState) => ({
+            children: [...prevState.children, { name: '', childPassword: '', confirmChildPassword: '' }]
+        }))
+    }
+
+    removeChild = (e) => {
+        e.preventDefault()
+        const removedArr = this.state.children
+        removedArr.pop()
+        this.setState((prevState) => ({
+            children: removedArr
+        }))
+    }
+    
+    
 
     handleSubmit(e) {
         e.preventDefault()
@@ -37,25 +61,19 @@ class SignUpForm extends React.Component {
             email: this.state.email,
             firstName: this.state.firstName,
             familyName: this.state.familyName,
+            // numChildren: this.state.numChildren,
             children: this.state.children,
             password: this.state.password,
             password2: this.state.password2
         }
         // This action to signup and login user
         // this.props.signup(user, this.props.history)
-        this.props.signup(user);
-        // we need to reset the state onSubmit 
-        // this.setState({
-        //     email: user.email,
-        //     familyName: user.familyName,
-        //     password: user.password,
-        //     password2: user.password2,
-        // })
-
+        this.props.signup(user)
+        
     }
 
     render() {
-        
+        let { familyName, firstName, email, password, password2, children } = this.state
         return (
             <section className="hero is-primary">
                 <div className="hero-body">
@@ -63,13 +81,16 @@ class SignUpForm extends React.Component {
                         <Title title="Child Labor" />
                         <SubTitle subTitle="Sign Up" />
                     </div>
-                    <form className="login-form" onSubmit={this.handleSubmit}>
-                        <UserField value={this.state.familyName} onChange={this.update("familyName")} placeholder="Family Name" />
-                        <UserField value={this.state.firstName} onChange={this.update("firstName")} placeholder="First Name" />
-                        <EmailField email={this.state.email} onChange={this.update("email")} />
-                        <ChildButtons />
-                        <PasswordField password={this.state.password} onChange={this.update("password")} passwordType={`Password`} />
-                        <PasswordField password={this.state.password2} onChange={this.update("password2")} passwordType={`Repeat Password`} />
+                    <form className="login-form" onSubmit={this.handleSubmit} onChange={this.handleChange}>
+                        <UserField name="familyName" value={familyName} placeholder="Family Name" />
+                        <UserField name="firstName" value={firstName}  placeholder="First Name" />
+                        <EmailField name="email" email={email} placeholder="Email" />
+                        <PasswordField name="password" password={password}  passwordType={`Password`} />
+                        <PasswordField name="password2" password={password2}  passwordType={`Repeat Password`} />
+                        <p>Add Child</p>
+                        <AddChildButton onClick={this.addChild}/>
+                        <p>Number of children: {children.length}</p>
+                        <ChildInputs children={children} />
                         <SubmitField formType="Sign Up" />
                     </form>
                 </div>
