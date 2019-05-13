@@ -8,7 +8,7 @@ This project was built over 5 days with a team of 4 developers.
 
 ## Technologies 
 
-`HTML5` / `CSS3 & SCSS` / `JavaScript` / `MongoDB` / `Express.js` / `React` / `Redux` / `Node.js` / `Bulma.io` / `Anime.js`
+`HTML5` / `CSS3 & SCSS` / `JavaScript` / `MongoDB` / `Express.js` / `React` / `Redux` / `Node.js` / `Bulma.io` / `Anime.js` / `Chart.js`
 
 ## Features
 
