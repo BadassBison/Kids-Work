@@ -44,3 +44,7 @@ Saturday | Sunday | Monday | Tuesday | Wednesday
 ---------|--------|--------|---------|----------
 MERN Learning | Form Components | Main App Components | Payout Components
 xxxx | User Auth | Chores | Overall functionality between components
+
+## Style and Design
+
+![](images/color_pallate.png)
