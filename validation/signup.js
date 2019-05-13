@@ -7,8 +7,8 @@ module.exports = function validateSignupInput(data) {
     data.firstName = validText(data.firstName) ? data.firstName : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
-    data.children = validText(data.children) ? data.children : '';
-    data.children = JSON.parse(data.children);
+    data.children = typeof data.children === "array" ? data.children : [];
+    // data.children = JSON.parse(data.children);
 
     if (!Validator.isLength(data.firstName, { min: 2, max: 30})) {
         errors.firstName = 'First name must be between 5 and 30 characters';

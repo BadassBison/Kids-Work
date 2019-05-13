@@ -9,7 +9,7 @@ export const setAuthToken = token => {
 };
 
 export const signup = (familyData) => {
-    return axios.post('/api/familes/signup', familyData);
+    return axios.post('/api/families/signup', familyData);
 };
 
 export const loginParent = (userData) => {

@@ -12,6 +12,7 @@ router.get("/", (req, res) =>{
 });
 
 router.post('/signup', (req, res) => {
+    // debugger
     const { errors, isValid } = validateSignupInput(req.body);
 
     if (!isValid) {

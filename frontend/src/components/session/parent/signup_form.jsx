@@ -10,16 +10,18 @@ import SubTitle from '../../display_components/sub_title/sub_title'
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props)
-        this.State = {
+        this.state = {
             email: '',
+            firstName: '',
             familyName: '',
+            children: [],
             password: '',
             password2: '',
             formType: 'Sign Up'
             // errors will be slice of the local state
             // errors: {} 
         }
-
+        this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
@@ -33,20 +35,22 @@ class SignUpForm extends React.Component {
         e.preventDefault()
         let user = {
             email: this.state.email,
+            firstName: this.state.firstName,
             familyName: this.state.familyName,
+            children: this.state.children,
             password: this.state.password,
             password2: this.state.password2
         }
         // This action to signup and login user
         // this.props.signup(user, this.props.history)
-
+        this.props.signup(user);
         // we need to reset the state onSubmit 
-        this.setState({
-            email: user.email,
-            familyName: user.familyName,
-            password: user.password,
-            password2: user.password2,
-        })
+        // this.setState({
+        //     email: user.email,
+        //     familyName: user.familyName,
+        //     password: user.password,
+        //     password2: user.password2,
+        // })
 
     }
 
@@ -60,11 +64,12 @@ class SignUpForm extends React.Component {
                         <SubTitle subTitle="Sign Up" />
                     </div>
                     <form className="login-form" onSubmit={this.handleSubmit}>
-                        <UserField familyName={this.props.familyName} onChange={this.update("familyName")} />
-                        <EmailField email={this.props.email} onChange={this.update("email")} />
+                        <UserField value={this.state.familyName} onChange={this.update("familyName")} placeholder="Family Name" />
+                        <UserField value={this.state.firstName} onChange={this.update("firstName")} placeholder="First Name" />
+                        <EmailField email={this.state.email} onChange={this.update("email")} />
                         <ChildButtons />
-                        <PasswordField password={this.props.password} onChange={this.update("password")} passwordType={`Password`} />
-                        <PasswordField password={this.props.password2} onChange={this.update("password2")} passwordType={`Repeat Password`} />
+                        <PasswordField password={this.state.password} onChange={this.update("password")} passwordType={`Password`} />
+                        <PasswordField password={this.state.password2} onChange={this.update("password2")} passwordType={`Repeat Password`} />
                         <SubmitField formType="Sign Up" />
                     </form>
                 </div>

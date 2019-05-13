@@ -4,7 +4,7 @@ const PasswordField = (props) => {
     return (
         <div className="field">
             <div className="control has-icons-left ">
-                <input className="input" type="password" value={props.password} placeholder={props.passwordType} />
+                <input className="input" type="password" value={props.password} placeholder={props.passwordType} onChange={props.onChange} />
                 <span className="icon is-small is-left">
                     <i className="fas fa-lock"></i>
                 </span>
