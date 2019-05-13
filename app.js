@@ -10,13 +10,6 @@ const bodyParser = require("body-parser");
 const passport = require('passport');
 require('./config/passport')(passport);
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('frontend/build'));
-    app.get('/', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-    })
-}
-
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("connected to mongo!"))
@@ -32,6 +25,13 @@ app.use(passport.initialize());
 
 app.use("/api/families", families);
 app.use("/api/chores", chores);
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    })
+}
 
 const port = process.env.PORT || 5000;
 
