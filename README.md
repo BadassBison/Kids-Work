@@ -47,4 +47,5 @@ xxxx | User Auth | Chores | Overall functionality between components
 
 ## Style and Design
 
-![](images/color_pallate.png)
+### Color Palette
+![color palette](images/color_palette.png)
