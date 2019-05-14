@@ -9,8 +9,10 @@ router.get('/',
     passport.authenticate("jwt", { session: false }),
         (req, res) => {
             Family.findById(req.user.id)
-                .then(family => {
-                    return res.json(family);
+                .then(({ children, familyName, firstName, id }) => {
+                    // let [ { id, firstName: childFirstName, chores } ] = children;
+                    // TODO: remove passwords, might use destructuring or mapping
+                    return res.json({ children, familyName, firstName, id });
                 }
             );
         }
@@ -28,6 +30,7 @@ router.get('/:childId',
         }
     );
 
+
 //child login has correct jwt credentials to post
 router.post("/:childId",
     passport.authenticate("jwt", { session: false}),
@@ -36,11 +39,13 @@ router.post("/:childId",
         Family.findById(req.user.id)
             .then (family => {
                 const chore = req.body;
+
                 // for (let maybeChild of family.children) {
                 //     if (maybeChild.firstName === chore.childName) {
                 //         child = maybeChild;
                 //     }
                 // }
+
                 const child = family.children.id(req.params.childId);
 
                 if (!child) {
@@ -72,8 +77,10 @@ router.patch("/:childId/:choreId",
     (req, res) => {
         Family.findById(req.user.id)
             .then(family => {
+
                 const child = family.children.id(req.params.childId);
                 const chore = child.chores.id(req.params.choreId);
+
                 if (!chore) {
                     errors.childName = "Chore not found";
                     return res.status(400).json(errors);
