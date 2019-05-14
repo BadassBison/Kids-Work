@@ -9,10 +9,12 @@ router.get('/',
     passport.authenticate("jwt", { session: false }),
         (req, res) => {
             Family.findById(req.user.id)
-                .then(({ children, familyName, firstName, id }) => {
-                    // let [ { id, firstName: childFirstName, chores } ] = children;
-                    // TODO: remove passwords, might use destructuring or mapping
-                    return res.json({ children, familyName, firstName, id });
+                .then(({ children, familyName, firstName, id, chores }) => {
+                    const secureChildren = [];
+                    for (let {balance, chores, payments, date, id, firstName} of children) {
+                        secureChildren.push({balance, chores, payments, date, id, firstName});
+                    }
+                    return res.json({ children: secureChildren, familyName, firstName, id, chores });
                 }
             );
         }
@@ -23,8 +25,13 @@ router.get('/:childId',
     passport.authenticate("jwt", { session: false }),
         (req, res) => {
             Family.findById(req.user.id)
-                .then(family => {
-                    return res.json(family.children.id(req.params.childId));
+                .then(({children}) => {
+                    //don't send back password
+                    const child = children.id(req.params.childId)
+                    // const {balance, chores, payments, date, id, firstName} = family.children.id(req.params.childId);
+                    const {balance, chores, payments, date, id, firstName} = child;
+                    debugger
+                    return res.json({balance, chores, payments, date, id, firstName});
                 }
             );
         }
@@ -39,12 +46,6 @@ router.post("/:childId",
         Family.findById(req.user.id)
             .then (family => {
                 const chore = req.body;
-
-                // for (let maybeChild of family.children) {
-                //     if (maybeChild.firstName === chore.childName) {
-                //         child = maybeChild;
-                //     }
-                // }
 
                 const child = family.children.id(req.params.childId);
 
@@ -72,6 +73,31 @@ router.post("/:childId",
         
 });
 
+router.post("/",
+    passport.authenticate("jwt", { session: false}),
+    (req, res) => {
+
+        Family.findById(req.user.id)
+            .then (family => {
+                const chore = {...req.body};
+                const { errors, isValid } = validateChoreInput(chore);
+
+                if (!isValid) {
+                    return res.status(400).json(errors);
+                }
+                family.chores.push(chore);
+                family.markModified(`chores`);
+                family.save()
+                    .then(family => {
+                        return res.json(family);
+                    })
+                    .catch(err => console.log(err));
+                
+            })
+            .catch(err => console.log(err));
+        
+});
+
 router.patch("/:childId/:choreId",
     passport.authenticate("jwt", { session: false}),
     (req, res) => {
@@ -79,23 +105,32 @@ router.patch("/:childId/:choreId",
             .then(family => {
 
                 const child = family.children.id(req.params.childId);
-                const chore = child.chores.id(req.params.choreId);
+                let chore;
+                if (req.body.status === "CHOSEN") {
+                    chore = family.chores.id(req.params.choreId)
+                } else {
+                    chore = child.chores.id(req.params.choreId);
+                }
 
                 if (!chore) {
                     errors.childName = "Chore not found";
                     return res.status(400).json(errors);
                 } 
-                else {
-                    chore.status = req.body.status;
-                    if (chore.status === "COMPLETED") {
-                        child.balance += chore.amount;
-                    } 
-                    family.save()
-                        .then(family => {
-                            return res.json(family);
-                        })
-                        .catch(err => console.log(err));
+                chore.status = req.body.status;
+                chore.statusChangeDate = Date.now();
+                if (chore.status === "COMPLETED") {
+                    child.balance += chore.amount;
+                } else if (chore.status === "CHOSEN") {
+                    child.chores.push(chore);
+                    family.chores[chore.__index].remove();
+                    family.markModified(`children[${child.__index}].chores`);
+                    family.markModified('chores');
                 }
+                family.save()
+                    .then(family => {
+                        return res.json(family);
+                    })
+                    .catch(err => console.log(err));
             });
         });
 

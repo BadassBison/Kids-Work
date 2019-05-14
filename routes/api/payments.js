@@ -3,7 +3,8 @@ const router = express.Router();
 const passport = require("passport");
 const Family = require("../../models/Family");
 
-router.post("/:childId",
+// request requires a payment_amount field specifying how much money to reduce from childs account
+  router.post("/:childId",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Family.findById(req.user.id)
@@ -13,8 +14,8 @@ router.post("/:childId",
               errors.childName = "Child name not found";
               return res.status(400).json(errors);
             }
-            const amount = child.balance;
-            child.balance = 0;
+            const amount = req.body.payment_amount;
+            child.balance -= amount;
             child.payments.push({ amount });
             family.markModified(`children[${child.__index}].payments`);
             family
