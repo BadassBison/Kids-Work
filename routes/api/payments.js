@@ -20,8 +20,15 @@ const Family = require("../../models/Family");
             family.markModified(`children[${child.__index}].payments`);
             family
             .save()
-            .then(family => {
-                return res.json(family);
+              .then(({ children }) => {
+                const { payments } = children.id(child.id);
+                const lastPayment = payments[payments.length - 1];
+                return res.json({ 
+                  id: lastPayment.id,
+                  amount: lastPayment.amount,
+                  datePaid: lastPayment.datePaid,
+                  childId: child.id
+                });
             })
             .catch(err => console.log(err));
         })
