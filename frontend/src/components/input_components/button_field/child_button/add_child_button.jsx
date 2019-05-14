@@ -1,9 +1,9 @@
 import React from 'react'
 
-const AddChildButton = (props) => {
+const AddChildButton = ({ onClick }) => {
     return (        
-        <button className="button is-light child-button">
-            <i className="fas fa-plus"></i>Child
+        <button className="button is-light child-button" onClick={onClick}>
+            <i className="fas fa-plus"></i>
         </button>
     )
 }

@@ -30,20 +30,24 @@ router.get('/:childId',
         }
     );
 
-// to do: child login has correct jwt credentials to post
-router.post("/",
+
+//child login has correct jwt credentials to post
+router.post("/:childId",
     passport.authenticate("jwt", { session: false}),
     (req, res) => {
 
         Family.findById(req.user.id)
             .then (family => {
                 const chore = req.body;
-                let child = family.children.id(chore.childId);
+
                 // for (let maybeChild of family.children) {
                 //     if (maybeChild.firstName === chore.childName) {
                 //         child = maybeChild;
                 //     }
                 // }
+
+                const child = family.children.id(req.params.childId);
+
                 if (!child) {
                     errors.childName = "Child name not found";
                     return res.status(400).json(errors);
@@ -55,7 +59,7 @@ router.post("/",
                     }
 
                     child.chores.push(chore);
-                    family.markModified(`children[${family.children.length - 1}].chores`);
+                    family.markModified(`children[${child.__index}].chores`);
                     family.save()
                         .then(family => {
                             return res.json(family);
@@ -73,13 +77,19 @@ router.patch("/:childId/:choreId",
     (req, res) => {
         Family.findById(req.user.id)
             .then(family => {
-                let chore = family.children.id(req.params.childId).chores.id(req.params.choreId);
+
+                const child = family.children.id(req.params.childId);
+                const chore = child.chores.id(req.params.choreId);
+
                 if (!chore) {
                     errors.childName = "Chore not found";
                     return res.status(400).json(errors);
                 } 
                 else {
                     chore.status = req.body.status;
+                    if (chore.status === "COMPLETED") {
+                        child.balance += chore.amount;
+                    } 
                     family.save()
                         .then(family => {
                             return res.json(family);
