@@ -178,7 +178,7 @@ class SignUpForm extends React.Component {
                                 )
                             })
                         }
-                        <SubmitField formType="Sign Up" />
+                        <SubmitField value="Sign Up" />
                     </form>
                 </div>
             </section>

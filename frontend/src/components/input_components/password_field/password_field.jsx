@@ -1,10 +1,10 @@
 import React from 'react'
 
-const PasswordField = ({ placeholder, className }) => {
+const PasswordField = ({ placeholder, onChange }) => {
     return (
         <div className="field">
             <div className="control has-icons-left ">
-                <input type="password"/>
+                <input type="password" className="input" onChange={onChange} placeholder={placeholder}/>
                 <span className="icon is-small is-left">
                     <i className="fas fa-lock"></i>
                 </span>
