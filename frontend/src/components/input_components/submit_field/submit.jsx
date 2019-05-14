@@ -1,11 +1,11 @@
 import React from 'react'
 
-const SubmitField = (props) => {
+const SubmitField = ({ value }) => {
 
     return (
         <div className="field">
             <div className="control">
-                <button className="button is-success btn-stretched">{props.formType}</button>
+                <input type="submit" className="button is-info is-fullwidth" value={value}/>
             </div>
         </div>
     )

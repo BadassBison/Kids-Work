@@ -1,9 +1,9 @@
 import React from 'react'
 import UserField from '../../input_components/user_field/user_field'
 import PasswordField from '../../input_components/password_field/password_field'
-import SubmitField from '../../input_components/submit_field/submit'
 import Title from '../../display_components/title/title'
 import SubTitle from '../../display_components/sub_title/sub_title'
+import SubmitField from '../../input_components/submit_field/submit';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -15,7 +15,6 @@ class LoginForm extends React.Component {
             errors: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.update = this.update.bind(this);
     }
 
     update(field) {
@@ -26,13 +25,14 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // let user = {
-        //     fir
-        //     familyName: this.state.familyName,
-        //     password: this.state.password
-        // };
+        let user = {
+            firstName: this.state.firstName,
+            familyName: this.state.familyName,
+            password: this.state.password
+        };
+        debugger
 
-        this.props.loginParent(this.state);
+        this.props.loginParent(user);
         // user login action still need to implemented below
         // this.props.logIn(user, this.props.history)
 
@@ -51,13 +51,13 @@ class LoginForm extends React.Component {
                         <Title title="Child Labor" />
                         <SubTitle subTitle="Sign In" />
                     </div>
+                    <form className="login-form" onSubmit={this.handleSubmit}>
+                        <UserField value={this.props.firstName} onChange={this.update("firstName")} placeholder="First Name"/>
+                        <UserField value={this.props.familyName} onChange={this.update("familyName")} placeholder="Family Name"/>
+                        <PasswordField password={this.props.password} onChange={this.update("password")} placeholder="Password"/>
+                        <SubmitField value="Sign In" />
+                    </form>
                 </div>
-                <form className="login-form" onSubmit={this.handleSubmit}>
-                    <UserField value={this.props.firstName} onChange={this.update("firstName")} placeholder="First Name"/>
-                    <UserField value={this.props.familyName} onChange={this.update("familyName")} placeholder="Family Name"/>
-                    <PasswordField password={this.props.password} onChange={this.update("password")} passwordType={`Password`} />
-                    <SubmitField formType="Sign In" />
-                </form>
             </section>
         )
     }
