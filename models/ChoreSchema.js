@@ -22,9 +22,9 @@ const ChoreSchema = new Schema({
         type: Boolean,
         default: false
     },
-    completed: {
+    status: {
         type: String,
-        enum: ["ASSIGNED", "PENDING_REVIEW", "COMPLETED"],
+        enum: ["ASSIGNED", "PENDING_REVIEW", "COMPLETED", "FAILED"],
         default: "ASSIGNED"
     },
     date: {
