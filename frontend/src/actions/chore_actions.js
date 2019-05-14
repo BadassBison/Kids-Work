@@ -26,13 +26,19 @@ export const fetchChores = () => disptach => {
 };
 
 export const fetchChildChores = (childId) => disptach => {
-    APIUtils.getAllChores(childId).then(chores => {
+    APIUtils.getChildChores(childId).then(chores => {
         disptach(receiveChildChores(chores));
     });
 };
 
-export const createChore = (chore) => disptach => {
-    APIUtils.createChore(chore).then(chore => {
+export const createUnassignedChore = (chore) => disptach => {
+    APIUtils.createUnassignedChore(chore).then(chore => {
+        disptach(receiveChore(chore));
+    });
+};
+
+export const createAssignedChore = (chore) => disptach => {
+    APIUtils.createAssignedChore(chore).then(chore => {
         disptach(receiveChore(chore));
     });
 };

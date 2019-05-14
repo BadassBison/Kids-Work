@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const Family = require("../../models/Family");
 const validateChildSignup = require('../../validation/child');
+const bcrypt = require("bcryptjs");
 
 router.post("/",
   passport.authenticate("jwt", { session: false }),
@@ -27,8 +28,10 @@ router.post("/",
         family.markModified(`children`);
         family
           .save()
-          .then(family => {
-            return res.json(family);
+          .then(({ children }) => {
+            const newChild = children[children.length - 1];
+            const { balance, chores, payments, date, id, firstName } = newChild;
+            return res.json({ balance, chores, payments, date, id, firstName });
           })
           .catch(err => console.log(err));
       })
