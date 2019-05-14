@@ -9,8 +9,10 @@ router.get('/',
     passport.authenticate("jwt", { session: false }),
         (req, res) => {
             Family.findById(req.user.id)
-                .then(family => {
-                    return res.json(family);
+                .then(({ children, familyName, firstName }) => {
+                    // let [ { id, firstName: childFirstName, chores } ] = children;
+                    // TODO: remove passwords, might use destructuring or mapping
+                    return res.json({ children, familyName, firstName });
                 }
             );
         }
@@ -28,7 +30,7 @@ router.get('/:childId',
         }
     );
 
-//child login has correct jwt credentials to post
+// to do: child login has correct jwt credentials to post
 router.post("/",
     passport.authenticate("jwt", { session: false}),
     (req, res) => {
@@ -36,12 +38,12 @@ router.post("/",
         Family.findById(req.user.id)
             .then (family => {
                 const chore = req.body;
-                let child;
-                for (let maybeChild of family.children) {
-                    if (maybeChild.firstName === chore.childName) {
-                        child = maybeChild;
-                    }
-                }
+                let child = family.children.id(chore.childId);
+                // for (let maybeChild of family.children) {
+                //     if (maybeChild.firstName === chore.childName) {
+                //         child = maybeChild;
+                //     }
+                // }
                 if (!child) {
                     errors.childName = "Child name not found";
                     return res.status(400).json(errors);
@@ -71,7 +73,6 @@ router.patch("/:childId/:choreId",
     (req, res) => {
         Family.findById(req.user.id)
             .then(family => {
-                debugger
                 let chore = family.children.id(req.params.childId).chores.id(req.params.choreId);
                 if (!chore) {
                     errors.childName = "Chore not found";

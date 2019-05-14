@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken, loginParent } from './util/session_api_util';
 import { loginChild, logout, signup } from './actions/session_actions';
+import { fetchChores, fetchChildChores, createChore, updateChore } from './actions/chore_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -29,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.loginChild = loginChild;
     window.loginParent = loginParent;
     window.signup = signup;
+    window.fetchChores = fetchChores;
+    window.fetchChildChores = fetchChildChores;
+    window.createChore = createChore;
+    window.updateChore = updateChore;
     // END
     
     const root = document.getElementById('root');
