@@ -1,10 +1,10 @@
 import React from 'react'
 
-const EmailField = (props) => {
+const EmailField = () => {
     return (
         <div className="field">
             <div className="control has-icons-left">
-                <input className="input" type="email" value={props.email} placeholder="Email" onChange={props.onChange} />
+                <input className="input" type="email" placeholder="Email" />
                 <span className="icon is-small is-left">
                     <i className="fas fa-envelope"></i>
                 </span>

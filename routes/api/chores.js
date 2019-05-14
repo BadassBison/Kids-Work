@@ -70,7 +70,6 @@ router.post("/",
 //                     errors.childName = "Child name not found";
 //                     return res.status(400).json(errors);
 //                 } else {
-//                     debugger
 //                     Family.find()
 //                         .where()
 //                     for (let maybeChild of family.children) {
