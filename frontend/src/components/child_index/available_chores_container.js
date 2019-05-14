@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ChildLinks from './child_links';
+import AvailableChores from './available_chores';
 
 const mapStateToProps = state => {
     return ({
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => {
     })
 }
 
-export default connect(mapStateToProps, null)(ChildLinks)
+export default connect(mapStateToProps, null)(AvailableChores)
