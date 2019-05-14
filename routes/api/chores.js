@@ -9,10 +9,10 @@ router.get('/',
     passport.authenticate("jwt", { session: false }),
         (req, res) => {
             Family.findById(req.user.id)
-                .then(({ children, familyName, firstName }) => {
+                .then(({ children, familyName, firstName, id }) => {
                     // let [ { id, firstName: childFirstName, chores } ] = children;
                     // TODO: remove passwords, might use destructuring or mapping
-                    return res.json({ children, familyName, firstName });
+                    return res.json({ children, familyName, firstName, id });
                 }
             );
         }
