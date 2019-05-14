@@ -5,11 +5,11 @@ import SignUpForm from './session/parent/signup_form';
 import Splash from './splash/splash.jsx';
 import SignUpFormContainer from '../components/session/parent/signup_form_container'
 import LoginFormContainter from '../components/session/parent/login_form_container'
+import ChoresSwitchButton from './dashboard_components/switch/switch'
 
 const App = () => (
-    
     <Switch>
-        <Route exact path="/" component={Splash} />
+        <AuthRoute exact path="/" component={Splash} />
     </Switch>
 );
 
