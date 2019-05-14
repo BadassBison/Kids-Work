@@ -7,7 +7,7 @@ import kidChores3 from './images/kid-chores-3.jpg';
 import kidsMoney from './images/kids-with-money.jpg';
 import './splash.css';
 
-const Splash = () => {
+const Splash = (props) => {
     return (
         <main className="splash-body">
             <nav className="splash-nav-container">
@@ -17,7 +17,6 @@ const Splash = () => {
                             to="/"
                             className="">
                             LOGO
-                            {/* <img className="splash-logo" src={logo} alt=""/> */}
                         </Link>
                         {/* <Link
                             to="/"
@@ -39,11 +38,11 @@ const Splash = () => {
                     <div className="splash-nav-links-container">
                         <button 
                             className="splash-nav-link"
-                            // onClick={}
+                            onClick={() => props.openModal({ modalType: 'login'})}
                             >Log In</button>
                         <button 
                             className="splash-nav-link"
-                            // onClick={}
+                            onClick={() => props.openModal({ modalType: 'signup'})}
                             >Sign Up</button>
                     </div>
                 </div>

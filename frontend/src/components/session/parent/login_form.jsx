@@ -30,7 +30,6 @@ class LoginForm extends React.Component {
             familyName: this.state.familyName,
             password: this.state.password
         };
-        debugger
 
         this.props.loginParent(user);
         // user login action still need to implemented below
@@ -41,12 +40,18 @@ class LoginForm extends React.Component {
         //     password: user.password
         // })
 
+        this.props.closeModal();
     }
 
     render() {
         return (
-            <section className="hero is-primary">
-                <div className="hero-body">
+            <section className="hero is-primary form-container">
+                <div className="hero-body fix-padding">
+                    <button
+                        className="close-modal-button"
+                        onClick={this.props.closeModal}>
+                        <i className="fas fa-window-close"></i>
+                    </button>
                     <div className="title-container">
                         <Title title="Child Labor" />
                         <SubTitle subTitle="Sign In" />
