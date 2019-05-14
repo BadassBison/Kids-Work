@@ -7,6 +7,7 @@ import { setAuthToken, loginParent } from './util/session_api_util';
 import { loginChild, logout, signup } from './actions/session_actions';
 import { fetchChores, fetchChildChores, createAssignedChore, createUnassignedChore, updateChore } from './actions/chore_actions';
 import { createChild } from './actions/child_actions';
+import { createPayment } from './actions/payment_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.createUnassignedChore = createUnassignedChore;
     window.updateChore = updateChore;
     window.createChild = createChild;
+    window.createPayment = createPayment;
     // END
     
     const root = document.getElementById('root');
