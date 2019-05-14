@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import ParentIndexPage from './parent_index_page'
+import ChildIndexBody from './child_index_body'
 
 const mapStateToProps = state => {
     return ({
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => {
     })
 }
 
-export default connect(mapStateToProps, null)(ParentIndexPage)
+export default connect(mapStateToProps, null)(ChildIndexBody)

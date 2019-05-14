@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import ParentIndexBody from './Parent_index_body'
+import ParentIndexBody from './parent_index_body'
 
 const mapStateToProps = state => {
     return ({
