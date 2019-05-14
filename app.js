@@ -4,7 +4,9 @@ const app = express();
 const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 const families = require("./routes/api/families");
+const children = require("./routes/api/children");
 const chores = require("./routes/api/chores");
+const payments = require("./routes/api/payments");
 const Family = require("./models/Family");
 const bodyParser = require("body-parser");
 const passport = require('passport');
@@ -24,7 +26,9 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 app.use("/api/families", families);
+app.use("/api/children", children);
 app.use("/api/chores", chores);
+app.use("/api/payments", payments);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
