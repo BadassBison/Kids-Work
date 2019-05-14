@@ -19,10 +19,12 @@ class SignUpForm extends React.Component {
             // errors will be slice of the local state
             // errors: {} 
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     handleChange = (e) => {
+        e.preventDefault();
         if (['firstName input', 'password input', 'password2 input'].includes(e.target.className)) {
             let children = [...this.state.children]
             let className = e.target.className.split(' ')[0]
@@ -39,6 +41,7 @@ class SignUpForm extends React.Component {
     }
 
     addChild = (e) => {
+        e.preventDefault();
         this.setState((prevState) => ({
             children: [...prevState.children, { firstName: '', password: '', password2: '' }]
         }))
@@ -65,11 +68,13 @@ class SignUpForm extends React.Component {
             password: this.state.password,
             password2: this.state.password2
         }
-        this.props.signup(user)
-        
+        this.props.signup(user);
+        this.handleClose();
     }
 
-   
+    handleClose() {
+        this.props.closeModal();
+    }
 
     render() {
         const { children } = this.state
@@ -78,8 +83,8 @@ class SignUpForm extends React.Component {
                 <div className="hero-body fix-padding">
                     <button
                         className="close-modal-button" 
-                        onClick={this.props.closeModal}>
-                        <i className="fas fa-window-close"></i>
+                        onClick={this.handleClose}>
+                            <i className="fas fa-window-close"></i>
                     </button>
                     <div className="title-container">
                         <Title title="Child Labor" />
