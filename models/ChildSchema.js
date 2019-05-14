@@ -16,7 +16,7 @@ const ChildSchema = new Schema({
     type: Number,
     default: 0
   },
-  chores: [ChoreSchema],
+  chores: [ChoreSchema("assigned")],
   payments: [PaymentSchema],
   date: {
     type: Date,
