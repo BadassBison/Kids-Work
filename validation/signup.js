@@ -4,7 +4,6 @@ const validateChoreInput = require('./chores');
 
 module.exports = function validateSignupInput(data) {
     let errors = {};
-
     data.firstName = validText(data.firstName) ? data.firstName : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
@@ -69,7 +68,6 @@ module.exports = function validateSignupInput(data) {
         }
 
     });
-
     return {
         errors,
         isValid: Object.keys(errors).length === 0
