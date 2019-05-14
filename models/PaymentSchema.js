@@ -7,7 +7,7 @@ const PaymentSchema = new Schema({
     required: true,
     min: [0, "Thats messed up"]
   },
-  date: {
+  datePaid: {
     type: Date,
     default: Date.now
   }

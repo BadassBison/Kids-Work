@@ -16,6 +16,13 @@ router.post("/",
             return res.status(400).json(errors);
         }
 
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(child.password, salt, (err, hash) => {
+            if (err) throw err;
+            child.password = hash;
+          });
+        });
+
         family.children.push( child );
         family.markModified(`children`);
         family

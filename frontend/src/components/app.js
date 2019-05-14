@@ -9,7 +9,7 @@ import LoginFormContainter from '../components/session/parent/login_form_contain
 const App = () => (
     
     <Switch>
-        <Route exact path="/" component={Splash} />
+        <AuthRoute exact path="/" component={Splash} />
     </Switch>
 );
 
