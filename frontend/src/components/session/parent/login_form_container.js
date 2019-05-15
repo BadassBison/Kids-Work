@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import  LoginForm from './login_form';
 import { loginChild, loginParent } from '../../../actions/session_actions';
 import { closeModal } from '../../../actions/modal_actions';
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
     updateFilter: filter => dispatch(updateFilter(filter))
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default withRouter(connect(null, mapDispatchToProps)(LoginForm));

@@ -20,7 +20,7 @@ export const receiveErrors = errors => ({
 });
 
 export const signup = (familyData) => dispatch => {
-    APIUtil.signup(familyData).then(parent => (
+    return APIUtil.signup(familyData).then(parent => (
         dispatch(receiveUserLogin(parent))
     ), err => (
         dispatch(receiveErrors(err.response.data))
@@ -28,7 +28,7 @@ export const signup = (familyData) => dispatch => {
 };
 
 export const loginParent = (userData) => dispatch => {
-    APIUtil.loginParent(userData).then(userData => {
+    return APIUtil.loginParent(userData).then(userData => {
         const { token } = userData.data;
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);
@@ -41,7 +41,7 @@ export const loginParent = (userData) => dispatch => {
 };
 
 export const loginChild = (userData) => dispatch => {
-    APIUtil.loginChild(userData).then(userData => {
+    return APIUtil.loginChild(userData).then(userData => {
         const { token } = userData.data;
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);

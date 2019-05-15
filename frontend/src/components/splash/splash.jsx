@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import logo from './images/logo.png';
+import logo from '../splash/images/logo2.png';
 import kidChores1 from './images/kid-chores-1.jpg';
 import kidChores2 from './images/kid-chores-2.jpg';
 import kidChores3 from './images/kid-chores-3.jpg';
@@ -14,19 +14,9 @@ const Splash = (props) => {
                 <div className="splash-nav">
                     <div className="logo-container">
                         <Link 
-                            to="/"
-                            className="">
-                            LOGO
+                            to="/">
+                            <img className="splash-logo" src={logo} alt=""/>
                         </Link>
-                        {/* <Link
-                            to="/"
-                            className=""
-                            aria-label="menu"
-                            aria-expanded="false">
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                        </Link> */}
                     </div>
 
                     <div className="splash-nav-title">
