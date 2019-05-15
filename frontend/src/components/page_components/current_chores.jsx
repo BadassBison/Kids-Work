@@ -12,10 +12,9 @@ export default class CurrentChores extends Component {
       } else {
         firstName = "";
       }
-      
       return (
         <>
-          <div className="box" onClick={() => this.props.openModal({modalType: `showChore ${chore._id}`})}>{chore.title} ${chore.amount} {firstName}</div>
+          <div className="box" onClick={() => this.props.openModal({modalType: `showChore ${chore.id}`})}>{chore.title} ${chore.amount} {firstName}</div>
         </>
       )
     })
