@@ -1,10 +1,14 @@
 import React from 'react'
 
-const ChoreDescription = ({ placeholder}) => {
+const ChoreDescription = ({ placeholder, value, onChange }) => {
     return (
-        <div class="field">
-            <div class="control">
-                <textarea className="textarea is-primary" placeholder={placeholder}></textarea>
+        <div className="field">
+            <div className="control">
+                <textarea 
+                    className="textarea is-primary" 
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}></textarea>
             </div>
         </div>
     )

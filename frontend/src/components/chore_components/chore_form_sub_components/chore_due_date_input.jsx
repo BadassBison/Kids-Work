@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const ChoreDate = () => {
+const ChoreDueDate = ({ value, onChange }) => {
     const date = new Date()
     const minDate = date.setDate(date.getDate() - 1)
     const minMonth = date.setMonth(date.getMonth() - 1)
@@ -9,10 +9,14 @@ const ChoreDate = () => {
     return (
         <div className="field has-addons-centered">
             <p className="control">
-                <input type="date" className="input" min={`${minYear}-${minMonth}-${minDate}`}/>
+                <input type="date" 
+                    className="input" 
+                    min={`${minYear}-${minMonth}-${minDate}`}
+                    value={value}
+                    onChange={onChange}/>
             </p>
         </div>
     )
 }
 
-export default ChoreDate
+export default ChoreDueDate
