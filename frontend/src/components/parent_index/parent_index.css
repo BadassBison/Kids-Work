@@ -1,0 +1,15 @@
+#header-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.parent-index-header-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#create-chore-modal-button {
+    margin-right: 20px;
+}
