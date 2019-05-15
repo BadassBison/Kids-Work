@@ -19,32 +19,32 @@ export const receiveChore = (payload) => ({
     payload
 });
 
-export const fetchChores = () => disptach => {
+export const fetchChores = () => dispatch => {
     APIUtils.getAllChores().then(chores => {
-        disptach(receiveAllChores(chores));
+        dispatch(receiveAllChores(chores));
     });
 };
 
-export const fetchChildChores = (childId) => disptach => {
+export const fetchChildChores = (childId) => dispatch => {
     APIUtils.getChildChores(childId).then(chores => {
-        disptach(receiveChildChores(chores));
+        dispatch(receiveChildChores(chores));
     });
 };
 
-export const createUnassignedChore = (chore) => disptach => {
+export const createUnassignedChore = (chore) => dispatch => {
     APIUtils.createUnassignedChore(chore).then(chore => {
-        disptach(receiveChore(chore));
+        dispatch(receiveChore(chore));
     });
 };
 
-export const createAssignedChore = (chore) => disptach => {
+export const createAssignedChore = (chore) => dispatch => {
     APIUtils.createAssignedChore(chore).then(chore => {
-        disptach(receiveChore(chore));
+        dispatch(receiveChore(chore));
     });
 };
 
-export const updateChore = (chore) => disptach => {
+export const updateChore = (chore) => dispatch => {
     APIUtils.updateChore(chore).then(chore => {
-        disptach(receiveChore(chore));
+        dispatch(receiveChore(chore));
     });
 };

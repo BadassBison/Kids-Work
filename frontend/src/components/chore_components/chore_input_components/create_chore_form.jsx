@@ -45,9 +45,12 @@ class CreateChoreForm extends React.Component {
             title: this.state.title,
             body: this.state.body,
             amount: this.state.amount,
-            dueDate: this.state.dueDate
-
+            dueDate: this.state.dueDate,
+            priority: this.state.priority,
+            assign: this.state.assign
         }
+
+        this.props.createUnassignedChore(chore)
     }
 
     render() {
