@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import ChildIndexheader from './child_index_header'
+import ChildIndexHeader from './child_index_header'
 
 const mapStateToProps = state => {
     return ({
