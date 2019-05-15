@@ -72,6 +72,12 @@
     font-size: 16px;
     font-family: 'Gloria Hallelujah', cursive;
     outline: none;
+    min-width: 88px;
+    cursor: pointer;
+}
+
+.splash-nav-link p {
+    width: 100%;
 }
 
 .splash-nav-link:hover {
@@ -137,6 +143,10 @@
     .p-container p {
         font-size: 27px;
     }
+/* 
+    .splash-nav-link {
+        font-size: 14px;
+    } */
 }
 
 @media (max-width: 664px) {

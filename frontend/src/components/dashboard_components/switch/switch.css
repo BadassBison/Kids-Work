@@ -43,14 +43,28 @@
 }
 
 .dash-board-switch-inner:before {
-    content: "CHORES";
     padding-left: 18px;
     background-color: #F78733;
     text-align: left;
 } 
 
-.dash-board-switch-inner:after {
+.chores-content:before {
+    content: "CHORES";
+}
+
+.chores-content:after {
     content: "PAYOUTS";
+}
+
+.login-switch:before {
+    content: "PARENT";
+}
+
+.login-switch:after {
+    content: "CHILD";
+}
+
+.dash-board-switch-inner:after {
     padding-right: 18px;
     background-color: #4ABDAC;
     text-align: right;
