@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import CreateChoreForm from './create_chore_form'
 import { withRouter } from 'react-router-dom'
-import { createChore } from '../../../util/chore_util'
+import { createUnassignedChore } from '../../../actions/chore_actions'
 
 const mapStateToProps = (state, ownProps) => {
     return({
@@ -16,11 +16,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 
-const mapDispatchToPtops = dispatch => {
-    return ({
-        createChore: chore => dispatch(createChore(chore))
+const mapDispatchToProps = dispatch => {
+    return({
+        createUnassignedChore: chore => dispatch(createUnassignedChore(chore))
     })
 }
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToPtops)(CreateChoreForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateChoreForm))

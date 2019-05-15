@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChoreAmount = ({ placeholder }) => {
+const ChoreAmount = ({ placeholder, value, onChange }) => {
     return(
         <div className="field has-addons has-addons-centered">
             <p className="control">
@@ -13,7 +13,14 @@ const ChoreAmount = ({ placeholder }) => {
                 </span>
             </p>
             <p className="control">
-                <input type="number" className="input" min="0" step="0.01" placeholder={placeholder} />
+                <input 
+                    type="number" 
+                    className="input" 
+                    min="0" 
+                    step="0.01" 
+                    placeholder={placeholder} 
+                    value={value}
+                    onChange={onChange}/>
             </p>
         </div>
     )
