@@ -3,8 +3,10 @@ import CurrentChores from './current_chores';
 import { openModal } from '../../actions/modal_actions'
 
 const mapStateToProps = state => {
+    
     return ({
-       chores: filterChores(state)
+        children: state.entities.children,
+        chores: filterChores(state)
     });
 };
 
