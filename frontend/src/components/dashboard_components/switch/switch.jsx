@@ -14,7 +14,6 @@ class ChoresSwitchButton extends React.Component {
         this.setState(state => ({
             checked: !state.checked
         }))
-        console.log(this.state)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -27,7 +26,7 @@ class ChoresSwitchButton extends React.Component {
     render() {
         const { checked } = this.state
         return (
-            <div className="dash-board-switch-container">
+            <div id="switch" className="dash-board-switch-container">
                 <div className="dash-board-switch">
                     <input type="checkbox" 
                         name="dash-board-switch" 
@@ -37,7 +36,7 @@ class ChoresSwitchButton extends React.Component {
                         checked={checked}/>
                     <label className="dash-board-switch-label" 
                         htmlFor="mydashboardswitch">
-                        <span className="dash-board-switch-inner"></span>
+                        <span className={`dash-board-switch-inner ${this.props.loginSwitch}`}></span>
                         <span className="dash-board-switch-switch"></span>
                     </label>
                 </div>
