@@ -1,0 +1,13 @@
+.child-header-container {
+    display: block; 
+    /* justify-content: center; */
+}
+
+.child-margin {
+    margin: 0 70px;
+    /* width: 70%; */
+}
+
+#header-box {
+    margin-top: 15px;
+}

@@ -1,0 +1,94 @@
+.dash-board-switch-container {
+    width: 200px;
+}
+
+.dash-board-switch {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.dash-board-switch-checkbox {
+    display: none;
+}
+
+.dash-board-switch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #999999;
+    border-radius: 21px;
+}
+
+.dash-board-switch-inner {
+    display: block; 
+    width: 200%; 
+    margin-left: -100%;
+    transition: margin 0.4s ease-in 0s;
+}
+
+.dash-board-switch-inner:before, .dash-board-switch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 40px;
+    padding: 0; 
+    line-height: 40px;
+    font-size: 24px; 
+    color: white; 
+    font-family: Trebuchet, Arial, sans-serif; 
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.dash-board-switch-inner:before {
+    padding-left: 18px;
+    background-color: #F78733;
+    text-align: left;
+} 
+
+.chores-content:before {
+    content: "CHORES";
+}
+
+.chores-content:after {
+    content: "PAYOUTS";
+}
+
+.login-switch:before {
+    content: "PARENT";
+}
+
+.login-switch:after {
+    content: "CHILD";
+}
+
+.dash-board-switch-inner:after {
+    padding-right: 18px;
+    background-color: #4ABDAC;
+    text-align: right;
+}
+
+.dash-board-switch-switch {
+    display: block; 
+    width: 35px; 
+    margin: 5.5px;
+    background: #FFFFFF;
+    position: absolute; 
+    top: 0; 
+    bottom: 0;
+    right: 156px;
+    border: 2px solid #999999; 
+    border-radius: 21px;
+    transition: all 0.4s ease-in 0s; 
+}
+
+.dash-board-switch-checkbox:checked + .dash-board-switch-label .dash-board-switch-inner {
+    margin-left: 0;
+    
+}
+
+.dash-board-switch-checkbox:checked + .dash-board-switch-label .dash-board-switch-switch {
+    right: 0;
+}

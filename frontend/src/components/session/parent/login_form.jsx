@@ -1,9 +1,10 @@
 import React from 'react'
 import UserField from '../../input_components/user_field/user_field'
 import PasswordField from '../../input_components/password_field/password_field'
-import SubmitField from '../../input_components/submit_field/submit'
 import Title from '../../display_components/title/title'
 import SubTitle from '../../display_components/sub_title/sub_title'
+import SubmitField from '../../input_components/submit_field/submit';
+import Switch from '../../dashboard_components/switch/switch';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -12,10 +13,11 @@ class LoginForm extends React.Component {
             firstName: '',
             familyName: '',
             password: '',
-            errors: ''
+            errors: '',
+            isParent: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.update = this.update.bind(this);
+        this.toggleSwitch = this.toggleSwitch.bind(this);
     }
 
     update(field) {
@@ -26,13 +28,25 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // let user = {
-        //     fir
-        //     familyName: this.state.familyName,
-        //     password: this.state.password
-        // };
+        let user = {
+            firstName: this.state.firstName,
+            familyName: this.state.familyName,
+            password: this.state.password
+        };
 
-        this.props.loginParent(this.state);
+        if (this.state.isParent) {
+            this.props.loginParent(user)
+                .then(() => {
+                    this.props.history.push('/parent');
+                });
+            } else {
+                this.props.loginChild(user)
+                .then(() => {
+                    this.props.history.push('/child');
+                });
+            //filter by child name, not necessary since we only fetch that child's chores
+            // .then(() => this.props.updateFilter({field: "child", value: user.firstName }));
+        }
         // user login action still need to implemented below
         // this.props.logIn(user, this.props.history)
 
@@ -41,23 +55,43 @@ class LoginForm extends React.Component {
         //     password: user.password
         // })
 
+        this.props.closeModal();
+    }
+
+    toggleSwitch(e) {
+        this.setState({
+            isParent: !this.state.isParent
+        });
     }
 
     render() {
         return (
-            <section className="hero is-primary">
-                <div className="hero-body">
+            <section className="hero is-primary form-container">
+                <div className="hero-body fix-padding">
+                    <button
+                        className="close-modal-button"
+                        onClick={this.props.closeModal}>
+                        <i className="fas fa-window-close"></i>
+                    </button>
                     <div className="title-container">
                         <Title title="Child Labor" />
                         <SubTitle subTitle="Sign In" />
                     </div>
+                    <div className="login-switch-container">
+                        <button 
+                            className="login-switch-button"
+                            onChange={this.toggleSwitch}>
+                            <Switch 
+                                loginSwitch={"login-switch"} />
+                        </button>
+                    </div>
+                    <form className="login-form" onSubmit={this.handleSubmit}>
+                        <UserField value={this.props.firstName} onChange={this.update("firstName")} placeholder="First Name"/>
+                        <UserField value={this.props.familyName} onChange={this.update("familyName")} placeholder="Family Name"/>
+                        <PasswordField password={this.props.password} onChange={this.update("password")} placeholder="Password"/>
+                        <SubmitField value="Sign In" />
+                    </form>
                 </div>
-                <form className="login-form" onSubmit={this.handleSubmit}>
-                    <UserField value={this.props.firstName} onChange={this.update("firstName")} placeholder="First Name"/>
-                    <UserField value={this.props.familyName} onChange={this.update("familyName")} placeholder="Family Name"/>
-                    <PasswordField password={this.props.password} onChange={this.update("password")} passwordType={`Password`} />
-                    <SubmitField formType="Sign In" />
-                </form>
             </section>
         )
     }

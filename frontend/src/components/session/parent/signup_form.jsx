@@ -1,11 +1,9 @@
 import React from 'react'
-import UserField from '../../input_components/user_field/user_field'
-import EmailField from '../../input_components/email_field/email_field'
-import PasswordField from '../../input_components/password_field/password_field'
 import SubmitField from '../../input_components/submit_field/submit'
-import ChildButtons from '../../input_components/button_field/child_button/child_buttons'
 import Title from '../../display_components/title/title'
 import SubTitle from '../../display_components/sub_title/sub_title'
+import AddChildButton from '../../input_components/button_field/child_button/add_child_button'
+import MinusChildButton from '../../input_components/button_field/child_button/minus_child_button'
 
 class SignUpForm extends React.Component {
     constructor(props) {
@@ -21,18 +19,47 @@ class SignUpForm extends React.Component {
             // errors will be slice of the local state
             // errors: {} 
         }
-        this.update = this.update.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
-    update(field) {
+    handleChange = (e) => {
+        e.preventDefault();
+        if (['firstName input', 'password input', 'password2 input'].includes(e.target.className)) {
+            let children = [...this.state.children]
+            let className = e.target.className.split(' ')[0]
+            children[e.target.dataset.id][className] = e.target.value
+            this.setState({ children }, console.log(this.state.children))
+        } 
+
+    }
+
+    update(field){
         return e => this.setState({
-            [field]: e.currentTarget.value
+            [field]: e.target.value
         })
     }
 
+    addChild = (e) => {
+        e.preventDefault();
+        this.setState((prevState) => ({
+            children: [...prevState.children, { firstName: '', password: '', password2: '' }]
+        }))
+    }
+
+    removeChild = (e) => {
+        e.preventDefault()
+        const removeChildArr = this.state.children
+        removeChildArr.pop()
+        this.setState({
+            children: removeChildArr
+        })
+    }
+    
+
     handleSubmit(e) {
         e.preventDefault()
+
         let user = {
             email: this.state.email,
             firstName: this.state.firstName,
@@ -41,36 +68,127 @@ class SignUpForm extends React.Component {
             password: this.state.password,
             password2: this.state.password2
         }
-        // This action to signup and login user
-        // this.props.signup(user, this.props.history)
         this.props.signup(user);
-        // we need to reset the state onSubmit 
-        // this.setState({
-        //     email: user.email,
-        //     familyName: user.familyName,
-        //     password: user.password,
-        //     password2: user.password2,
-        // })
+        this.handleClose();
+    }
 
+    handleClose() {
+        this.props.closeModal();
     }
 
     render() {
-        
+        const { children } = this.state
         return (
-            <section className="hero is-primary">
-                <div className="hero-body">
+            <section className="hero is-primary form-container">
+                <div className="hero-body fix-padding">
+                    <button
+                        className="close-modal-button" 
+                        onClick={this.handleClose}>
+                            <i className="fas fa-window-close"></i>
+                    </button>
                     <div className="title-container">
                         <Title title="Child Labor" />
                         <SubTitle subTitle="Sign Up" />
                     </div>
-                    <form className="login-form" onSubmit={this.handleSubmit}>
-                        <UserField value={this.state.familyName} onChange={this.update("familyName")} placeholder="Family Name" />
-                        <UserField value={this.state.firstName} onChange={this.update("firstName")} placeholder="First Name" />
-                        <EmailField email={this.state.email} onChange={this.update("email")} />
-                        <ChildButtons />
-                        <PasswordField password={this.state.password} onChange={this.update("password")} passwordType={`Password`} />
-                        <PasswordField password={this.state.password2} onChange={this.update("password2")} passwordType={`Repeat Password`} />
-                        <SubmitField formType="Sign Up" />
+                    <form className="login-form" onSubmit={this.handleSubmit} onChange={this.handleChange}>
+                        <div className="field">
+                            <div className="control has-icons-left">
+                                <input type="text" className="input" value={this.state.familyName} onChange={this.update('familyName')} placeholder="Family name" />
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="control has-icons-left">
+                                <input type="text" className="input" value={this.state.firstName} onChange={this.update('firstName')} placeholder="First name" />
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="control has-icons-left">
+                                <input className="input" type="email" value={this.state.email} onChange={this.update('email')} placeholder="Email" />
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="control has-icons-left ">
+                                <input type="password" className="input" value={this.state.password} onChange={this.update('password')} placeholder="Password" />
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="control has-icons-left ">
+                                <input type="password" className="input" value={this.state.password2} onChange={this.update('password2')} placeholder="Repeat Password" />
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <label>
+                            <AddChildButton onClick={this.addChild}/>
+                        </label>
+                        <label>
+                            <MinusChildButton onClick={this.removeChild} disabled={children.length === 1 ? 'disabled' : ''} />
+                        </label>
+                        <p>Number of children: {children.length}</p>
+                        {
+                            children.map((child, index) => {
+                                let childId = `child-${index}`, passwordId = `password-${index}`, password2Id = `password2-${index}`
+                                return (
+                                    <div key={index}>
+                                        <div className="control has-icons-left">
+                                            <input 
+                                                type="text"
+                                                name={childId} 
+                                                data-id={index}
+                                                id={childId}
+                                                value={children[index].firstName}
+                                                className="firstName input"
+                                                placeholder="Child Name" />
+                                            <span className="icon is-small is-left">
+                                                <i className="fas fa-user"></i>
+                                            </span>
+                                        </div>
+                                        <div className="control has-icons-left ">
+                                            <input
+                                                type="password"
+                                                name={passwordId}
+                                                data-id={index}
+                                                id={passwordId}
+                                                value={children[index].password}
+                                                className="password input" 
+                                                placeholder="Password" />
+                                            <span className="icon is-small is-left">
+                                                <i className="fas fa-lock"></i>
+                                            </span>
+                                        </div>
+                                        <div className="control has-icons-left ">
+                                            <input
+                                                type="password"
+                                                name={password2Id}
+                                                data-id={index}
+                                                id={password2Id}
+                                                value={children[index].password2}
+                                                className="password2 input"
+                                                placeholder="Repeat Password" />
+                                            <span className="icon is-small is-left">
+                                                <i className="fas fa-lock"></i>
+                                            </span>
+                                        </div>
+                                        <br />
+                                    </div>
+                                )
+                            })
+                        }
+                        <SubmitField value="Sign Up" />
                     </form>
                 </div>
             </section>

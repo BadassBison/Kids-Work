@@ -1,33 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import logo from './images/logo.png';
+import logo from '../splash/images/logo2.png';
 import kidChores1 from './images/kid-chores-1.jpg';
 import kidChores2 from './images/kid-chores-2.jpg';
 import kidChores3 from './images/kid-chores-3.jpg';
 import kidsMoney from './images/kids-with-money.jpg';
 import './splash.css';
 
-const Splash = () => {
+const Splash = (props) => {
     return (
         <main className="splash-body">
             <nav className="splash-nav-container">
                 <div className="splash-nav">
                     <div className="logo-container">
                         <Link 
-                            to="/"
-                            className="navbar-item">
-                            LOGO
-                            {/* <img className="splash-logo" src={logo} alt=""/> */}
+                            to="/">
+                            <img className="splash-logo" src={logo} alt=""/>
                         </Link>
-                        {/* <Link
-                            to="/"
-                            className=""
-                            aria-label="menu"
-                            aria-expanded="false">
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                        </Link> */}
                     </div>
 
                     <div className="splash-nav-title">
@@ -39,11 +28,11 @@ const Splash = () => {
                     <div className="splash-nav-links-container">
                         <button 
                             className="splash-nav-link"
-                            // onClick={}
-                            >Log In</button>
+                            onClick={() => props.openModal({ modalType: 'login'})}
+                            ><p>Log In</p></button>
                         <button 
                             className="splash-nav-link"
-                            // onClick={}
+                            onClick={() => props.openModal({ modalType: 'signup'})}
                             >Sign Up</button>
                     </div>
                 </div>

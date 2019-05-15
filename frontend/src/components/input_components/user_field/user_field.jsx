@@ -1,10 +1,10 @@
 import React from 'react'
 
-const UserField = (props) => {
+const UserField = ({ value, onChange, placeholder }) => {
     return (
         <div className="field">
             <div className="control has-icons-left">
-                <input className="input" type="text" value={props.value} placeholder={props.placeholder} onChange={props.onChange}></input>
+                <input type="text" className="input" value={value} onChange={onChange} placeholder={placeholder}/>
                 <span className="icon is-small is-left">
                     <i className="fas fa-user"></i>
                 </span>

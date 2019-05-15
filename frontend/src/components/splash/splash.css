@@ -5,10 +5,31 @@
 #DFDCE3 - light gray
 #FEDCD2 - light pink */
 
-.splash-body {
+body {
     background-color: #DFDCE3;
     width: 100%;
     height: 100%;
+    min-height: 100vh;
+}
+
+.orange {
+    background: #F78733;
+}
+
+.dark-orange {
+    background: #FC4A1A;
+}
+
+.teal {
+    background: #4ABDAC;
+}
+
+.light-gray {
+    background: #DFDCE3;
+}
+
+.light-pink {
+    background: #FEDCD2;
 }
 
 .splash-nav-container {
@@ -17,9 +38,24 @@
     width: 100%;
     position: fixed;
     background: #4ABDAC;
-    opacity: 0.7;
-    z-index: 20;
+    opacity: 0.8;
+    z-index: 5;
     box-shadow: 0px 5px 5px white;
+}
+
+.navbar-container {
+    font-family: 'Gloria Hallelujah', cursive;
+    height: 80px;
+    width: 100%;
+    background: #4ABDAC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+}
+
+.chore-list-button {
+    margin-right: 15px;
 }
 
 .splash-nav {
@@ -52,8 +88,14 @@
 } */
 
 .splash-logo {
-    width: 100px;
-    height: 100px;
+    margin-top: 5px;
+    width: 90px;
+    height: 90px;
+}
+
+.navbar-logo {
+    width: 65px;
+    height: 65px;
 }
 
 .splash-nav-links-container {
@@ -72,6 +114,12 @@
     font-size: 16px;
     font-family: 'Gloria Hallelujah', cursive;
     outline: none;
+    min-width: 88px;
+    cursor: pointer;
+}
+
+.splash-nav-link p {
+    width: 100%;
 }
 
 .splash-nav-link:hover {
@@ -100,10 +148,13 @@
 .splash-info-container {
     height: auto;
     width: auto;
+    padding: .75rem;
 }
 
 .splash-info-container img {
     margin: 0 12px;
+    padding: 0;
+    box-shadow: 0 0 8px rgba(0,0,0,.3);
 }
 
 .p-container {
@@ -116,6 +167,8 @@
     height: 50%;
     width: 80%;
     margin: auto;
+    border-radius: 15px;
+    border: 2px solid rgb(190, 190, 190);
 }
 
 .p-container p {
@@ -125,12 +178,17 @@
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 40px;
     text-align: center;
+    padding: 10px;
 }
 
 @media (max-width: 1150px) {
     .p-container p {
         font-size: 27px;
     }
+/* 
+    .splash-nav-link {
+        font-size: 14px;
+    } */
 }
 
 @media (max-width: 664px) {

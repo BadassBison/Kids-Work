@@ -2,29 +2,34 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
-const Auth = ({ component: Component, path, loggedIn, exact }) => (
+const Parent = ({ component: Component, path, loggedIn, exact, isParent }) => (
     <Route path={path} exact={exact} render={(props) => (
-        !loggedIn ? (
+        (loggedIn && isParent) ? (
             <Component {...props} />
         ) : (
-            <Redirect to="/chores" />
+            <Redirect to="/" />
         )
     )} />
 );
 
-const Protected = ({ component: Component, path, loggedIn, exact }) => (
+const Child = ({ component: Component, path, loggedIn, exact }) => (
     <Route path={path} exact={exact} render={(props) => (
-        loggedIn ? (
+        (loggedIn) ? (
             <Component {...props} />
         ) : (
-            <Redirect to="/login" />
+            <Redirect to="/" />
         )
     )} />
 );
 
-const mapStateToProps = state => (
-    { loggedIn: state.session.isAuthenticated }
-);
+const mapStateToProps = state => {
+    const isParent = state.session.family ? state.session.family.isParent : false;
 
-export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
-export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
+    return ({
+        loggedIn: state.session.isAuthenticated,
+        isParent
+    })
+};
+
+export const ParentRoute = withRouter(connect(mapStateToProps)(Parent));
+export const ChildRoute = withRouter(connect(mapStateToProps)(Child));

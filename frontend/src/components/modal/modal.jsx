@@ -1,20 +1,30 @@
 import React from 'react';
-import SignupModal from './signup_modal';
-import LoginModal from './login_modal';
 import './modal.css';
+import LoginFormContainer from '../session/parent/login_form_container';
+import SignupFormContainer from '../session/parent/signup_form_container';
+import CreateChoreFormContainer from '../chore_components/chore_input_components/create_chore_form_container';
+import ChoreDisplay from '../../components/chore_components/chore_display_components/chore_display_container';
 
 const Modal = (props) => {
     if (!props.modal) {
         return null;
     }
+    
+    let modalName = props.modal.modalType.split(" ")[0];
 
     let component;
-    switch (props.modal.modalType) {
+    switch (modalName) {
         case "signup":
-            component = <SignupModal />;
+            component = <SignupFormContainer />;
             break;
         case "login":
-            component = <LoginModal />;
+            component = <LoginFormContainer />;
+            break;
+        case "createChore":
+            component = <CreateChoreFormContainer />;
+            break;
+        case "showChore":
+            component = <ChoreDisplay choreId={props.modal.modalType.split(" ")[1]} />;
             break;
         default:
             return null;
