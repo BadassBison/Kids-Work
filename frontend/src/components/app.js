@@ -2,6 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import ParentIndexPage from './parent_index/parent_index_page_container';
+import ChildIndexPage from './child_index/child_index_page_container';
 import SplashContainer from './splash/splash_container';
 import ModalContainer from './modal/modal_container';
 import CreateChoreFormContainer from './chore_components/chore_input_components/create_chore_form_container'
@@ -14,6 +15,7 @@ const App = () => (
             <AuthRoute exact path="/" component={SplashContainer} />
             <ProtectedRoute exact path="/chores" component={CreateChoreFormContainer} />
         </Switch>
+            <ParentIndexPage/>
     </>
 );
 

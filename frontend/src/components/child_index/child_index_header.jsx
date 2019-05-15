@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 export default class ChildIndexHeader extends Component {
   render() {
     return (
-       <section class="section">
-            <div class="container">
-                <h1 class="title">
+        <>
+            <div className="content">
+                <h1 className="is-large">
                     Hi Shawn
                 </h1>
-
-                <table class="table">
+            </div>
+            <table className="table is-striped is-hoverable">
                     <thead>
                         <tr>
                             <th>Balance</th>
@@ -20,7 +20,7 @@ export default class ChildIndexHeader extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr className="is-selected">
                             <td>$ 37</td>
                             <td>2</td>
                             <td>1</td>
@@ -29,8 +29,7 @@ export default class ChildIndexHeader extends Component {
                         </tr>
                     </tbody>  
                 </table>
-            </div>
-        </section>
+          </>
     )
   }
 }
