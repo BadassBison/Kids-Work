@@ -3,9 +3,10 @@ import ChildIndexHeader from './child_index_header';
 import { summerizedChoreData } from '../../util/chore_util';
 
 const mapStateToProps = state => {
+    
     return ({
         currentUser: state.session.family,
-        data: summerizedChoreData(state)
+        data: summerizedChoreData(state).filter(child => child.id === state.ui.filter.child || child.id === state.session.family.childId)
     });
 };
 
