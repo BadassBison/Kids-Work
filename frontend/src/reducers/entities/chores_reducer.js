@@ -20,13 +20,13 @@ const choresReducer = (state = defaultState, action) => {
                 chores = child.chores;
                 chores.forEach(chore => {
                     newState[chore._id] = chore;
-                    newState[chore._id].assigned = child._id;
+                    newState[chore._id].childId = child.id;
                 });
             });
             unassignedChores = action.payload.data.chores;
             unassignedChores.forEach(unassignedChore => {
                 newState[unassignedChore._id] = unassignedChore;
-                newState[unassignedChore._id].assigned = null;
+                newState[unassignedChore._id].childId = null;
             });
             return newState;
 
@@ -35,7 +35,7 @@ const choresReducer = (state = defaultState, action) => {
             const child = action.payload.data;
             child.chores.forEach(chore => {
                 newState[chore._id] = chore;
-                newState[chore._id].childId = child._id;
+                newState[chore._id].childId = child.id;
             });
             return newState;
 
