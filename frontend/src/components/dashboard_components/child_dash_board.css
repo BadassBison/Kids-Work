@@ -1,0 +1,10 @@
+.dashboard-graphs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.graph-item {
+    max-width: 400px;
+    margin: 10px;
+}
