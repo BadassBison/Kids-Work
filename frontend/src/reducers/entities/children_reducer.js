@@ -16,20 +16,14 @@ const childrenReducer = (state = defaultState, action) => {
             newState = merge({}, state);
             children = action.payload.data.children;
             children.forEach(child => {
-                newState[child.id] = {
-                    id: child.id,
-                    firstName: child.firstName
-                };
+                newState[child.id] = child;
             });
             return newState;
             
         case RECEIVE_CHILD_CHORES:
             newState = merge({}, state);
             const child = action.payload.data;
-            newState[child.id] = {
-                id: child.id,
-                firstName: child.firstName
-            };
+            newState[child.id] = child;
             return newState;
 
         case RECEIVE_CHILD:
