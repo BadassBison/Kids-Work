@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../splash/images/logo2.png';
+import logo from '../splash/images/CL-06.png';
 import kidChores1 from './images/kid-chores-1.jpg';
 import kidChores2 from './images/kid-chores-2.jpg';
 import kidChores3 from './images/kid-chores-3.jpg';
