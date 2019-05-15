@@ -43,6 +43,21 @@ body {
     box-shadow: 0px 5px 5px white;
 }
 
+.navbar-container {
+    font-family: 'Gloria Hallelujah', cursive;
+    height: 80px;
+    width: 100%;
+    background: #4ABDAC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+}
+
+.chore-list-button {
+    margin-right: 15px;
+}
+
 .splash-nav {
     display: flex;
     align-items: center;
@@ -73,8 +88,14 @@ body {
 } */
 
 .splash-logo {
-    width: 100px;
-    height: 100px;
+    margin-top: 5px;
+    width: 90px;
+    height: 90px;
+}
+
+.navbar-logo {
+    width: 65px;
+    height: 65px;
 }
 
 .splash-nav-links-container {

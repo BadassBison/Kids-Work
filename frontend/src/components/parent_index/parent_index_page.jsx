@@ -4,7 +4,7 @@ import ParentIndexheader from './parent_index_header_container';
 import MainLinks from "../page_components/main_links_container";
 import ChildLinks from "./child_links_container";
 import CurrentChores from "../page_components/current_chores_container";
-
+import { Link } from 'react-router-dom';
 
 export default class ParentIndexPage extends Component {
   
@@ -38,7 +38,9 @@ export default class ParentIndexPage extends Component {
                     </article>
                     
                     <article class="tile is-child notification is-primary">
-                      <p class="title">Dashboard</p>
+                      <Link to="/parent/dashboard" id="dashboard-link">
+                        <p class="title">Dashboard</p>
+                      </Link>
                     </article>
                   </div>
 

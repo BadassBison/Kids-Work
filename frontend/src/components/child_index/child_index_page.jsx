@@ -4,7 +4,7 @@ import ChildIndexBody from './child_index_body_container';
 import AvailableChores from "./available_chores";
 import CurrentChores from "../page_components/current_chores_container";
 import MainLinks from "../page_components/main_links_container";
-
+import { Link } from 'react-router-dom';
 
 export default class ChildIndexPage extends Component {
 
@@ -37,7 +37,9 @@ export default class ChildIndexPage extends Component {
                     </article>
                     
                     <article class="tile is-child notification is-info">
-                      <p class="title">Dashboard</p>
+                      <Link to="/child/dashboard" id="dashboard-link">
+                        <p class="title">Dashboard</p>
+                      </Link>
                     </article>
                   </div>
 

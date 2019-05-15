@@ -134,23 +134,25 @@ class ChildDashBoard extends React.Component {
 
     render() {
         return (
-            <main className="dashboard-body-container">
-                <header className="dashboard-header">
-                    <ChildIndexHeaderContainer />
-                </header>
+            <div className="dashboard-body-container">
+                <main >
+                    <header className="dashboard-header">
+                        <ChildIndexHeaderContainer />
+                    </header>
 
-                <section className="dashboard-graphs-container">
-                    <div className="graph-item">
-                        <canvas id="myChart1" width="400" height="400"></canvas>
-                    </div>
-                    {/* <div className="graph-item">
-                        <canvas id="myChart2" width="400" height="400"></canvas>
-                    </div> */}
-                    <div className="graph-item">
-                        <canvas id="myChart3" width="400" height="400"></canvas>
-                    </div>
-                </section>
-            </main>
+                    <section className="dashboard-graphs-container">
+                        <div className="graph-item">
+                            <canvas id="myChart1" width="400" height="400"></canvas>
+                        </div>
+                        {/* <div className="graph-item">
+                            <canvas id="myChart2" width="400" height="400"></canvas>
+                        </div> */}
+                        <div className="graph-item">
+                            <canvas id="myChart3" width="400" height="400"></canvas>
+                        </div>
+                    </section>
+                </main>
+            </div>
         )
     }
 }

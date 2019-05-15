@@ -35,9 +35,15 @@ class LoginForm extends React.Component {
         };
 
         if (this.state.isParent) {
-            this.props.loginParent(user);
-        } else {
-            this.props.loginChild(user)
+            this.props.loginParent(user)
+                .then(() => {
+                    this.props.history.push('/parent');
+                });
+            } else {
+                this.props.loginChild(user)
+                .then(() => {
+                    this.props.history.push('/child');
+                });
             //filter by child name, not necessary since we only fetch that child's chores
             // .then(() => this.props.updateFilter({field: "child", value: user.firstName }));
         }

@@ -18,7 +18,7 @@ export default class ParentIndexHeader extends Component {
     })
     return (
       <>
-        <div className="content" id="header-box">
+        <div className="content child-margin" id="header-box">
           <h1 className="is-large">Hi {this.props.currentUser.firstName}</h1>
           <div className="parent-index-header-buttons-container">
             <div className="field" id="create-chore-modal-button">
@@ -27,15 +27,9 @@ export default class ParentIndexHeader extends Component {
                     Create Chore    
                 </button>
             </div>
-            <div className="field">
-                <button className="button is-success is-rounded"
-                    onClick={() => this.props.logout()}>
-                    Logout    
-                </button>
-            </div>
           </div>
         </div>
-        <table className="table is-striped is-hoverable">
+        <table className="table is-striped is-hoverable child-margin">
           <thead>
             <tr>
               <th>Children</th>

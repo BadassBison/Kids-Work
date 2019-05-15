@@ -3,7 +3,10 @@ import {
     RECEIVE_CURRENT_USER
 } from '../actions/session_actions';
 
-const initialState = {};
+const initialState = {
+    isAuthenticated: false,
+    family: null
+};
 
 export default function(state = initialState, action) {
     Object.freeze(state);
@@ -16,10 +19,7 @@ export default function(state = initialState, action) {
                 family: action.userData
             };
         case RECEIVE_FAMILY_LOGOUT:
-            return {
-                isAuthenticated: false,
-                family: undefined
-            };
+            return initialState;
         default:
             return state;
     }

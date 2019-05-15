@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import ChildIndexHeader from './child_index_header';
 import { summerizedChoreData } from '../../util/chore_util';
+import { logout } from '../../actions/session_actions';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
     
@@ -14,8 +16,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         // openModal: modal => dispatch(openModal(modal)),
-        // logout: () => dispatch(logout())
+        logout: () => dispatch(logout())
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChildIndexHeader)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChildIndexHeader));

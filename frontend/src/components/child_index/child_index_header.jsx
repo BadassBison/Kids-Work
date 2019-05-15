@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './child.css';
 
 export default class ChildIndexHeader extends Component {
+
+
   render() {
 
       const summerizedData = this.props.data.map(child => {
@@ -15,13 +18,15 @@ export default class ChildIndexHeader extends Component {
           )
       })
     return (
-        <>
-            <div className="content">
-                <h1 className="is-large">
-                    {this.props.currentUser.firstName}
-                </h1>
+        <div className="child-header-container">
+            <div className="content child-margin">
+                <div className="parent-index-header-buttons-container">
+                    <h1 className="is-large">
+                        {this.props.currentUser.firstName}
+                    </h1>
+                </div>
             </div>
-            <table className="table is-striped is-hoverable">
+            <table className="table is-striped is-hoverable child-margin table-container">
                     <thead>
                         <tr>
                             <th>Balance</th>
@@ -35,7 +40,7 @@ export default class ChildIndexHeader extends Component {
                         {summerizedData}
                     </tbody>  
                 </table>
-          </>
+          </div>
     )
   }
 }
