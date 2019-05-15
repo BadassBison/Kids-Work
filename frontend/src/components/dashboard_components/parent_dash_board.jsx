@@ -1,9 +1,9 @@
 import React from 'react';
-import ChildIndexHeaderContainer from '../child_index/child_index_header_container';
+import ParentIndexHeaderContainer from '../parent_index/parent_index_header_container';
 import { Chart } from 'react-chartjs-2';
 import './child_dash_board.css';
 
-class ChildDashBoard extends React.Component {
+class ParentDashBoard extends React.Component {
     constructor(props) {
         super(props);
 
@@ -12,17 +12,28 @@ class ChildDashBoard extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchChildChores(this.props.currentUser.childId);
+        this.props.fetchChores();
     }
-    
+
     componentDidUpdate() {
         this.setGraphs();
     }
 
     getData() {
-        const childId = this.props.currentUser.childId;
-        const data = this.props.data[childId];
-        return [data.Completed, data.Open, data.Pending, data.Overdue];
+        const allData = { Completed: 0, Pending: 0, Open: 0, Overdue: 0 };
+        this.props.data.forEach(child => {
+            allData.Completed += child.Completed;
+            allData.Pending += child.Pending;
+            allData.Open += child.Open;
+            allData.Overdue += child.Overdue;
+        });
+        return [
+            allData.Completed, 
+            allData.Open, 
+            allData.Pending, 
+            allData.Overdue, 
+            this.props.unassignedChores
+        ];
     }
 
     setGraphs() {
@@ -34,7 +45,7 @@ class ChildDashBoard extends React.Component {
         let myChart1 = new Chart(ctx1, {
             type: one,
             data: {
-                labels: ['Completed', 'Assigned', 'Pending', 'Overdue'],
+                labels: ['Completed', 'Open', 'Pending', 'Overdue', 'Unassigned'],
                 datasets: [{
                     label: 'Chores',
                     data: this.getData(),
@@ -43,12 +54,14 @@ class ChildDashBoard extends React.Component {
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
+                        'rgba(68, 255, 50, 0.2)',
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
+                        'rgb(68, 255, 50, 1)',
                     ],
                     borderWidth: 1
                 }]
@@ -68,7 +81,7 @@ class ChildDashBoard extends React.Component {
         // let myChart2 = new Chart(ctx2, {
         //     type: two,
         //     data: {
-        //         labels: ['Completed', 'Assigned', 'Pending', 'Overdue'],
+        //         labels: ['Completed', 'Open', 'Pending', 'Overdue', 'Unassigned'],
         //         datasets: [{
         //             label: 'Chores',
         //             data: this.getData(),
@@ -77,12 +90,14 @@ class ChildDashBoard extends React.Component {
         //                 'rgba(54, 162, 235, 0.2)',
         //                 'rgba(255, 206, 86, 0.2)',
         //                 'rgba(75, 192, 192, 0.2)',
+        //                 'rgba(68, 255, 50, 0.2)',
         //             ],
         //             borderColor: [
         //                 'rgba(255, 99, 132, 1)',
         //                 'rgba(54, 162, 235, 1)',
         //                 'rgba(255, 206, 86, 1)',
         //                 'rgba(75, 192, 192, 1)',
+        //                 'rgba(68, 255, 50, 1)',
         //             ],
         //             borderWidth: 1
         //         }]
@@ -101,7 +116,7 @@ class ChildDashBoard extends React.Component {
         let myChart3 = new Chart(ctx3, {
             type: three,
             data: {
-                labels: ['Completed', 'Assigned', 'Pending', 'Overdue'],
+                labels: ['Completed', 'Open', 'Pending', 'Overdue', 'Unassigned'],
                 datasets: [{
                     label: 'Chores',
                     data: this.getData(),
@@ -110,12 +125,14 @@ class ChildDashBoard extends React.Component {
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
+                        'rgba(68, 255, 50, 0.2)',
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
+                        'rgba(68, 255, 50, 1)',
                     ],
                     borderWidth: 1
                 }]
@@ -136,7 +153,7 @@ class ChildDashBoard extends React.Component {
         return (
             <main className="dashboard-body-container">
                 <header className="dashboard-header">
-                    <ChildIndexHeaderContainer />
+                    <ParentIndexHeaderContainer />
                 </header>
 
                 <section className="dashboard-graphs-container">
@@ -155,4 +172,4 @@ class ChildDashBoard extends React.Component {
     }
 }
 
-export default ChildDashBoard;
+export default ParentDashBoard;
