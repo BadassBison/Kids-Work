@@ -30,7 +30,6 @@ router.get('/:childId',
                     const child = children.id(req.params.childId)
                     // const {balance, chores, payments, date, id, firstName} = family.children.id(req.params.childId);
                     const {balance, chores, payments, date, id, firstName} = child;
-                    debugger
                     return res.json({balance, chores, payments, date, id, firstName});
                 }
             );
@@ -62,8 +61,21 @@ router.post("/:childId",
                     child.chores.push(chore);
                     family.markModified(`children[${child.__index}].chores`);
                     family.save()
-                        .then(family => {
-                            return res.json(family);
+                        .then(({ children }) => {
+                            const childChores = children.id(req.params.childId).chores;
+                            const newChore = childChores[childChores.length - 1];
+                            return res.json({
+                                id: newChore.id,
+                                title: newChore.title,
+                                body: newChore.body,
+                                amount: newChore.amount,
+                                deadline: newChore.deadline,
+                                dateCreated: newChore.dateCreated,
+                                status: newChore.status,
+                                statusChangeDate: newChore.statusChangeDate,
+                                priority: newChore.priority,
+                                childId: child.id
+                            });
                         })
                         .catch(err => console.log(err));
                 }
@@ -88,8 +100,20 @@ router.post("/",
                 family.chores.push(chore);
                 family.markModified(`chores`);
                 family.save()
-                    .then(family => {
-                        return res.json(family);
+                    .then(({ chores }) => {
+                        const newChore = chores[chores.length - 1];
+                        return res.json({
+                            id: newChore.id,
+                            title: newChore.title,
+                            body: newChore.body,
+                            amount: newChore.amount,
+                            deadline: newChore.deadline,
+                            dateCreated: newChore.dateCreated,
+                            status: newChore.status,
+                            statusChangeDate: newChore.statusChangeDate,
+                            priority: newChore.priority,
+                            childId: null
+                        });
                     })
                     .catch(err => console.log(err));
                 
@@ -118,6 +142,7 @@ router.patch("/:childId/:choreId",
                 } 
                 chore.status = req.body.status;
                 chore.statusChangeDate = Date.now();
+
                 if (chore.status === "COMPLETED") {
                     child.balance += chore.amount;
                 } else if (chore.status === "CHOSEN") {
@@ -127,8 +152,22 @@ router.patch("/:childId/:choreId",
                     family.markModified('chores');
                 }
                 family.save()
-                    .then(family => {
-                        return res.json(family);
+                    .then(({ children }) => {
+                        const childChores = children.id(req.params.childId).chores;
+                        const updatedChore = childChores.id(chore.id);
+
+                        return res.json({ 
+                            id: updatedChore.id, 
+                            title: updatedChore.title, 
+                            body: updatedChore.body,
+                            amount: updatedChore.amount,
+                            deadline: updatedChore.deadline,
+                            dateCreated: updatedChore.dateCreated,
+                            status: updatedChore.status,
+                            statusChangeDate: updatedChore.statusChangeDate,
+                            priority: updatedChore.priority,
+                            childId: child.id
+                        });
                     })
                     .catch(err => console.log(err));
             });

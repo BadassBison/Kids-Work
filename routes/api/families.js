@@ -51,7 +51,8 @@ router.post('/signup', (req, res) => {
                                     id: family.id,
                                     familyName: family.familyName,
                                     firstName: family.firstName,
-                                    isParent: true
+                                    isParent: true,
+                                    childId: null
                                 };
                                 jwt.sign(
                                     payload,
@@ -63,6 +64,7 @@ router.post('/signup', (req, res) => {
                                             familyName: family.familyName,
                                             firstName: family.firstName,
                                             isParent: true,
+                                            childId: null,
                                             success: true,
                                             token: 'Bearer ' + token
                                         });
@@ -100,7 +102,8 @@ router.post('/parentLogin', (req, res) => {
                             id: family.id,
                             familyName: family.familyName,
                             firstName: family.firstName,
-                            isParent: true
+                            isParent: true,
+                            childId: null
                         };
                         jwt.sign(
                             payload,
@@ -112,6 +115,7 @@ router.post('/parentLogin', (req, res) => {
                                     familyName: family.familyName,
                                     firstName: family.firstName,
                                     isParent: true,
+                                    childId: null,
                                     success: true,
                                     token: 'Bearer ' + token
                                 });
@@ -158,10 +162,11 @@ router.post('/childLogin', (req, res) => {
                 .then(isMatch => {
                     if (isMatch) {
                         const payload = {
-                            id: family.id,
+                            id: loginChild.id,
                             familyName: family.familyName,
                             firstName: family.firstName,
-                            isParent: false
+                            isParent: false,
+                            childId: loginChild.id
                         };
                         jwt.sign(
                             payload,
@@ -169,10 +174,11 @@ router.post('/childLogin', (req, res) => {
                             { expiresIn: 3600 },
                             (err, token) => {
                                 res.json({
-                                    id: family.id,
+                                    id: loginChild.id,
                                     familyName: family.familyName,
-                                    firstName: family.firstName,
+                                    firstName: loginChild.firstName,
                                     isParent: false,
+                                    childId: loginChild.id,
                                     success: true,
                                     token: 'Bearer ' + token
                                 });

@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import ParentIndexheader from './parent_index_header_container'
+import ParentIndexheader from './parent_index_header_container';
 import ParentIndexBody from './parent_index_body';
 
 
 export default class ParentIndexPage extends Component {
+  
+
+  componentDidMount() {
+    this.props.fetchChores();
+  }
+
   render() {
     return (
       <div>

@@ -39,7 +39,7 @@ const Splash = (props) => {
                         <button 
                             className="splash-nav-link"
                             onClick={() => props.openModal({ modalType: 'login'})}
-                            >Log In</button>
+                            ><p>Log In</p></button>
                         <button 
                             className="splash-nav-link"
                             onClick={() => props.openModal({ modalType: 'signup'})}
