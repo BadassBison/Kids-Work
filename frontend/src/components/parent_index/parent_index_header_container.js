@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import ParentIndexHeader from './parent_index_header';
+import { openModal } from '../../actions/modal_actions'
+import { logout } from '../../actions/session_actions'
 
 const mapStateToProps = state => {
     return ({
@@ -33,9 +35,10 @@ const summerizedChoreData = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return ({
-       
-    })
+    return {
+      openModal: modal => dispatch(openModal(modal)),
+      logout: () => dispatch(logout())
+    };
 }
 
-export default connect(mapStateToProps, null)(ParentIndexHeader)
+export default connect(mapStateToProps, mapDispatchToProps)(ParentIndexHeader)
