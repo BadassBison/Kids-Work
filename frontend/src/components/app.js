@@ -14,10 +14,8 @@ const App = () => (
         <ModalContainer />
         <Switch>
             <AuthRoute exact path="/" component={SplashContainer} />
-            <ProtectedRoute exact path="/chores" component={CreateChoreFormContainer} />
-            <ProtectedRoute exact path="/childDashboard" component={ChildDashBoardContainer} />
+            <ProtectedRoute exact path="/parent" component={ParentIndexPage}/>
         </Switch>
-            {/* <ParentIndexPage/> */}
     </>
 );
 

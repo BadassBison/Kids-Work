@@ -22,6 +22,7 @@ class CreateChoreForm extends React.Component {
         }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChecked = this.handleChecked.bind(this)
+    this.handleClose = this.handleClose.bind(this)
     }
 
     update(field) {
@@ -51,6 +52,11 @@ class CreateChoreForm extends React.Component {
         }
 
         this.props.createUnassignedChore(chore)
+        this.props.closeModal()
+    }
+
+    handleClose() {
+      this.props.closeModal()
     }
 
     render() {
@@ -58,6 +64,12 @@ class CreateChoreForm extends React.Component {
         return (
           <section className="hero is-primary form-container">
             <div className="hero-body">
+              <button
+                className="close-modal-button"
+                onClick={this.handleClose}
+              >
+                <i className="fas fa-window-close" />
+              </button>
               <form
                 className="chore-form-container"
                 onSubmit={this.handleSubmit}
