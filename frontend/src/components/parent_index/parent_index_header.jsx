@@ -30,7 +30,7 @@ export default class ParentIndexHeader extends Component {
                     <th>Open</th>
                     <th>Pending</th>
                     <th>Overdue</th>
-                    <th>Complete</th>
+                    <th>Completed</th>
                 </tr>
             </thead>
             <tbody>

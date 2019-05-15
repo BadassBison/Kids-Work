@@ -9,8 +9,7 @@ const App = () => (
     <>
         <ModalContainer />
         <Switch>
-            {/* <AuthRoute exact path="/signup" component={SplashContainer} />
-            <AuthRoute exact path="/" component={ParentIndexPage} /> */}
+            <AuthRoute exact path="/signup" component={SplashContainer} />
         </Switch>
             <ParentIndexPage/>
     </>
