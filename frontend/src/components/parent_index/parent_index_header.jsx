@@ -19,7 +19,7 @@ export default class ParentIndexHeader extends Component {
     return (
       <>
         <div className="content" id="header-box">
-          <h1 className="is-large">Hi Sue</h1>
+          <h1 className="is-large">Hi {this.props.currentUser.firstName}</h1>
           <div className="parent-index-header-buttons-container">
             <div className="field" id="create-chore-modal-button">
                 <button className="button is-success is-rounded"
