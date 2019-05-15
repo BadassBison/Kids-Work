@@ -17,7 +17,7 @@ class CreateChoreForm extends React.Component {
             amount: 0,
             dueDate: '',
             priority: false,
-            assign: null,
+            childId: "",
 
         }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -48,10 +48,14 @@ class CreateChoreForm extends React.Component {
             amount: this.state.amount,
             dueDate: this.state.dueDate,
             priority: this.state.priority,
-            assign: this.state.assign
+            childId: this.state.childId
         }
-
-        this.props.createUnassignedChore(chore)
+        
+        if (this.state.childId === ""){
+          this.props.createUnassignedChore(chore)
+        } else {
+          this.props.createAssignedChore(chore)
+        }
         this.props.closeModal()
     }
 
@@ -61,6 +65,12 @@ class CreateChoreForm extends React.Component {
 
     render() {
         
+        const childOptions = this.props.children.map(child => {
+          return (
+            <option value={child.id}>{child.name}</option>
+          )
+        })
+
         return (
           <section className="hero is-primary form-container">
             <div className="hero-body">
@@ -90,6 +100,10 @@ class CreateChoreForm extends React.Component {
                   value={this.state.amount}
                   onChange={this.update("amount")}
                 />
+                <select onChange={this.update("childId")}>
+                  <option value="">Assign to child</option>
+                  {childOptions}
+                </select>
                 <ChoreDueDate
                   value={this.state.dueDate}
                   onChange={this.update("dueDate")}

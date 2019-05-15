@@ -10,7 +10,7 @@ const Modal = (props) => {
         return null;
     }
     
-    let modalName = props.modal.split(" ")[0];
+    let modalName = props.modal.modalType.split(" ")[0];
 
     let component;
     switch (modalName) {
@@ -24,7 +24,7 @@ const Modal = (props) => {
             component = <CreateChoreFormContainer />;
             break;
         case "showChore":
-            component = <ChoreDisplay choreId={props.modal.split(" ")[1]} />;
+            component = <ChoreDisplay choreId={props.modal.modalType.split(" ")[1]} />;
             break;
         default:
             return null;

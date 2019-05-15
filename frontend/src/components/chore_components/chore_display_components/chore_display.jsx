@@ -2,7 +2,6 @@ import React from 'react'
 import Title from '../../display_components/title/title';
 import ChoreBodyDisplay from '../chore_display_components/chore_body_display'
 import ChoreDueDateDisplay from './chore_duedate_display'
-// import { closeModal } from '../../../actions/modal_actions';
 
 
 class ChoreDisplay extends React.Component {
