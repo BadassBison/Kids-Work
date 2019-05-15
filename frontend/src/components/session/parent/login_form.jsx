@@ -4,6 +4,7 @@ import PasswordField from '../../input_components/password_field/password_field'
 import Title from '../../display_components/title/title'
 import SubTitle from '../../display_components/sub_title/sub_title'
 import SubmitField from '../../input_components/submit_field/submit';
+import Switch from '../../dashboard_components/switch/switch';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -12,9 +13,11 @@ class LoginForm extends React.Component {
             firstName: '',
             familyName: '',
             password: '',
-            errors: ''
+            errors: '',
+            isParent: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleSwitch = this.toggleSwitch.bind(this);
     }
 
     update(field) {
@@ -31,7 +34,11 @@ class LoginForm extends React.Component {
             password: this.state.password
         };
 
-        this.props.loginParent(user);
+        if (this.state.isParent) {
+            this.props.loginParent(user);
+        } else {
+            this.props.loginChild(user);
+        }
         // user login action still need to implemented below
         // this.props.logIn(user, this.props.history)
 
@@ -41,6 +48,12 @@ class LoginForm extends React.Component {
         // })
 
         this.props.closeModal();
+    }
+
+    toggleSwitch(e) {
+        this.setState({
+            isParent: !this.state.isParent
+        });
     }
 
     render() {
@@ -55,6 +68,14 @@ class LoginForm extends React.Component {
                     <div className="title-container">
                         <Title title="Child Labor" />
                         <SubTitle subTitle="Sign In" />
+                    </div>
+                    <div className="login-switch-container">
+                        <button 
+                            className="login-switch-button"
+                            onChange={this.toggleSwitch}>
+                            <Switch 
+                                loginSwitch={"login-switch"} />
+                        </button>
                     </div>
                     <form className="login-form" onSubmit={this.handleSubmit}>
                         <UserField value={this.props.firstName} onChange={this.update("firstName")} placeholder="First Name"/>

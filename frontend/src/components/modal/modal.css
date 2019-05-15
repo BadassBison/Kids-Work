@@ -39,6 +39,7 @@
   transition: 0.4s;
   display: block;
   float: right;
+  cursor: pointer;
 }
 
 .close-modal-button:hover { 
@@ -48,4 +49,16 @@
 
 .fix-padding {
   padding: 24px;
+}
+
+.login-switch-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.login-switch-button {
+  background: transparent;
+  border: none;
+  outline: none;
 }
