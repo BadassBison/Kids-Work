@@ -162,9 +162,9 @@ router.post('/childLogin', (req, res) => {
                 .then(isMatch => {
                     if (isMatch) {
                         const payload = {
-                            id: loginChild.id,
+                            id: family.id,
                             familyName: family.familyName,
-                            firstName: family.firstName,
+                            firstName: loginChild.firstName,
                             isParent: false,
                             childId: loginChild.id
                         };
@@ -174,7 +174,7 @@ router.post('/childLogin', (req, res) => {
                             { expiresIn: 3600 },
                             (err, token) => {
                                 res.json({
-                                    id: loginChild.id,
+                                    id: family.id,
                                     familyName: family.familyName,
                                     firstName: loginChild.firstName,
                                     isParent: false,

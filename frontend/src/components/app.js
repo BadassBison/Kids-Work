@@ -7,6 +7,7 @@ import SplashContainer from './splash/splash_container';
 import ModalContainer from './modal/modal_container';
 import CreateChoreFormContainer from './chore_components/chore_input_components/create_chore_form_container'
 import CreateChoreForm from './chore_components/chore_input_components/create_chore_form';
+import ChildDashBoardContainer from './dashboard_components/child_dash_board_container';
 
 const App = () => (
     <>
@@ -14,8 +15,9 @@ const App = () => (
         <Switch>
             <AuthRoute exact path="/" component={SplashContainer} />
             <ProtectedRoute exact path="/chores" component={CreateChoreFormContainer} />
+            <ProtectedRoute exact path="/childDashboard" component={ChildDashBoardContainer} />
         </Switch>
-            <ParentIndexPage/>
+            {/* <ParentIndexPage/> */}
     </>
 );
 

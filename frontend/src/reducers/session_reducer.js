@@ -11,9 +11,9 @@ export default function(state = initialState, action) {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             return {
-                ...state,
+                // ...state,
                 isAuthenticated: !!action.userData,
-                user: action.userData
+                family: action.userData
             };
         case RECEIVE_FAMILY_LOGOUT:
             return {

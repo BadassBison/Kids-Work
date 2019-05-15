@@ -3,7 +3,7 @@ import ParentIndexHeader from './parent_index_header';
 
 const mapStateToProps = state => {
     return ({
-       current_user: state.session.family,
+       currentUser: state.session.family,
        data: summerizedChoreData(state)
     });
 };
