@@ -26,7 +26,7 @@ export const summerizedChoreData = state => {
     const now = new Date();
     const summerizedChoreData = {};
     Object.values(state.entities.children).forEach(child => {
-        summerizedChoreData[child.id] = { name: child.firstName, Balance: child.balance, Completed: 0, Pending: 0, Open: 0, Overdue: 0 };
+        summerizedChoreData[child.id] = { name: child.firstName, id: child.id, Balance: child.balance, Completed: 0, Pending: 0, Open: 0, Overdue: 0 };
     });
     Object.values(state.entities.chores).forEach(chore => {
         if (chore.status === "COMPLETED") {

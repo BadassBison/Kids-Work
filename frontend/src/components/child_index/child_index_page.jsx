@@ -10,7 +10,8 @@ export default class ChildIndexPage extends Component {
 
 
   componentDidMount() {
-    this.props.fetchChildChores();
+    
+    this.props.fetchChildChores(this.props.childId);
   }
 
   render() {

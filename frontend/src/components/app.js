@@ -1,4 +1,5 @@
 import React from 'react';
+import {Route} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import ParentIndexPage from './parent_index/parent_index_page_container';
@@ -13,8 +14,9 @@ const App = () => (
     <>
         <ModalContainer />
         <Switch>
-            <AuthRoute exact path="/" component={SplashContainer} />
+            <Route exact path="/" component={SplashContainer} />
             <ProtectedRoute exact path="/parent" component={ParentIndexPage}/>
+            <ProtectedRoute exact path="/child" component={ChildIndexPage}/>
         </Switch>
     </>
 );
