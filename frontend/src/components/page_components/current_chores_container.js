@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import CurrentChores from './current_chores';
+import { openModal } from '../../actions/modal_actions'
 
 const mapStateToProps = state => {
     return ({
@@ -12,6 +13,7 @@ const filterChores = state => {
     let childFilter = state.ui.filter.child;
     const now = new Date();
     const chores = Object.values(state.entities.chores).filter(chore => {
+        
         let takeChore1 = true;
         let takeChore2 = true;
 
@@ -58,8 +60,8 @@ const filterChores = state => {
 
 const mapDispatchToProps = dispatch => {
     return ({
-       
+       openModal: modal => dispatch(openModal(modal))
     })
 }
 
-export default connect(mapStateToProps, null)(CurrentChores);
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentChores);
