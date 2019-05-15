@@ -41,6 +41,5 @@ export const summerizedChoreData = state => {
             }
         }
     });
-
     return Object.values(summerizedChoreData);
 };
