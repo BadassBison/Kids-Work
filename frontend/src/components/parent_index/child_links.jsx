@@ -13,7 +13,6 @@ export default class ChildLinks extends Component {
             {child.name}
           </button>
         )
-
       })
       const allButton = (
         <button className="button is-rounded is-large"
