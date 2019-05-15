@@ -1,16 +1,17 @@
-import { connect } from 'react-redux'
-import ChildIndexPage from './child_index_page'
+import { connect } from 'react-redux';
+import ChildIndexPage from './child_index_page';
+import { fetchChildChores } from '../../actions/chore_actions';
 
 const mapStateToProps = state => {
     return ({
        
-    })
-}
+    });
+};
 
 const mapDispatchToProps = dispatch => {
     return ({
-       
-    })
-}
+        fetchChildChores: childId => dispatch(fetchChildChores(childId))
+    });
+};
 
-export default connect(mapStateToProps, null)(ChildIndexPage)
+export default connect(mapStateToProps, mapDispatchToProps)(ChildIndexPage);

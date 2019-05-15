@@ -7,6 +7,12 @@ import MainLinks from "../page_components/main_links_container";
 
 
 export default class ChildIndexPage extends Component {
+
+
+  componentDidMount() {
+    this.props.fetchChildChores();
+  }
+
   render() {
     return (
       <div>
