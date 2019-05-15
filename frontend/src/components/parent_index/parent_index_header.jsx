@@ -23,7 +23,7 @@ export default class ParentIndexHeader extends Component {
           <div className="parent-index-header-buttons-container">
             <div className="field" id="create-chore-modal-button">
                 <button className="button is-success is-rounded"
-                    onClick={() => this.props.openModal({ modalType: 'create chore' })}>
+                    onClick={() => this.props.openModal({ modalType: 'createChore' })}>
                     Create Chore    
                 </button>
             </div>

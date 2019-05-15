@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
+import ChoreDisplay from '../../components/chore_components/chore_display_components/chore_display';
+
 
 export default class CurrentChores extends Component {
-
-
-  
   render() {
     const chores = this.props.chores.map(chore => {
-  
+      
       return (
-        <div className="box"><span>{chore.title}</span> <span>${chore.amount}</span></div>
+        <>
+
+          <div className="box" onClick={() => this.props.openModal(`showChore ${chore._id}`)}>{chore.title} ${chore.amount} {chore.childId}</div>
+        </>
       )
     })
 
     return (
         <div>
-          {/* <div className="box"><span>Wipe table</span> <span>$1.00</span></div>
-          <div className="box"><span>Dishes</span> <span>$1.00</span></div>
-          <div className="box"><span>Clean Room</span> <span>$1.00</span></div>
-          <div className="box"><span>Sweep Floor</span> <span>$1.00</span></div>
-          <div className="box"><span>Walk Dog</span> <span>$1.00</span></div>   */}
           {chores}
         </div>  
     )
