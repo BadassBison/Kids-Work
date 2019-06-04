@@ -13,33 +13,34 @@ export default class ParentIndexPage extends Component {
     this.props.fetchChores();
   }
 
+
   render() {
     return (
       <div>
 
-        <section class="section">
-          <div class="container">
+        <section className="section">
+          <div className="container">
 
           
-          <div class="tile is-ancestor">
-              <div class="tile is-vertical is-12">
+          <div className="tile is-ancestor">
+              <div className="tile is-vertical is-12">
                 
-                <div class="tile">
+                <div className="tile">
                   
-                  <div class="tile is-parent is-vertical">
-                    <article class="tile is-child notification is-info">
+                  <div className="tile is-parent is-vertical">
+                    <article className="tile is-child notification is-info">
                       <ParentIndexheader />
                     </article>
 
-                    <article class="tile is-child notification is-warning">
+                    <article className="tile is-child notification is-warning">
                       <MainLinks />
                       <ChildLinks />
                       <CurrentChores chores={this.props.chores}/>
                     </article>
                     
-                    <article class="tile is-child notification is-primary">
+                    <article className="tile is-child notification is-primary">
                       <Link to="/parent/dashboard" id="dashboard-link">
-                        <p class="title">Dashboard</p>
+                        <p className="title">Dashboard</p>
                       </Link>
                     </article>
                   </div>

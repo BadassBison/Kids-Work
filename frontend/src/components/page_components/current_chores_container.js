@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import CurrentChores from './current_chores';
 import { openModal } from '../../actions/modal_actions'
+import { fetchChores } from '../../actions/chore_actions'
 
 const mapStateToProps = state => {
     return ({

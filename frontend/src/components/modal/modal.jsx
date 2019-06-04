@@ -11,7 +11,6 @@ const Modal = (props) => {
     }
     
     let modalName = props.modal.modalType.split(" ")[0];
-    debugger
     let component;
     switch (modalName) {
         case "signup":
