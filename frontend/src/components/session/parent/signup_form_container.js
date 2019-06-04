@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import  SignUpForm from './signup_form';
-import { signup } from '../../../actions/session_actions';
+import { signup, loginParent } from '../../../actions/session_actions';
 import { closeModal } from '../../../actions/modal_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = () => {
     return ({
         children: []
     })
@@ -11,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     signup: familyData => dispatch(signup(familyData)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    loginParent: parent => dispatch(loginParent(parent))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+export default withRouter(connect(null, mapDispatchToProps)(SignUpForm));

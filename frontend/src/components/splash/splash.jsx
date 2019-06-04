@@ -8,6 +8,7 @@ import kidsMoney from './images/kids-with-money.jpg';
 import './splash.css';
 
 const Splash = (props) => {
+    
     return (
         <main className="splash-body">
             <nav className="splash-nav-container">
@@ -74,6 +75,7 @@ const Splash = (props) => {
             </div>
         </main>
     );
+    
 };
 
 export default Splash;

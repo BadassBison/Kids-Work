@@ -37,6 +37,7 @@ class LoginForm extends React.Component {
         if (this.state.isParent) {
             this.props.loginParent(user)
                 .then(() => {
+                    debugger
                     this.props.history.push('/parent');
                 });
             } else {
