@@ -34,7 +34,7 @@ export default class ParentIndexPage extends Component {
                     <article class="tile is-child notification is-warning">
                       <MainLinks />
                       <ChildLinks />
-                      <CurrentChores />
+                      <CurrentChores chores={this.props.chores}/>
                     </article>
                     
                     <article class="tile is-child notification is-primary">

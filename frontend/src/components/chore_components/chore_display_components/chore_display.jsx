@@ -13,6 +13,8 @@ class ChoreDisplay extends React.Component {
     handleClose() {
         this.props.closeModal();
     }
+
+
     render() {
         const { chore } = this.props;
         return (
