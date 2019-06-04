@@ -1,0 +1,7 @@
+.close-button:hover {
+    cursor: pointer;
+}
+
+.card:hover {
+    cursor: default;
+}

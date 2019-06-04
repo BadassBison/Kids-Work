@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './page_components.css'
 
 
 export default class CurrentChores extends Component {
