@@ -3,10 +3,9 @@ import ChoreDisplay from './chore_display';
 import { closeModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    
-    return (
-    {chore: state.entities.chores[ownProps.choreId]}
-    );
+    return ({
+        chore: state.entities.chores[ownProps.choreId]
+    });
 };
 
 const mapDispatchToProps = dispatch => {
