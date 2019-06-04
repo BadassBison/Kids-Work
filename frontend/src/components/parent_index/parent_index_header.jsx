@@ -41,30 +41,6 @@ export default class ParentIndexHeader extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Shawn</td>
-              <td>$ 37</td>
-              <td>2</td>
-              <td>1</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr className="is-selected">
-              <td>Dennis</td>
-              <td>$ 22</td>
-              <td>3</td>
-              <td>2</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>Chris</td>
-              <td>$ 10</td>
-              <td>1</td>
-              <td>1</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
             {summerizedData}
           </tbody>
         </table>
