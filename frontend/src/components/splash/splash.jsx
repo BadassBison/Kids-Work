@@ -21,7 +21,7 @@ const Splash = (props) => {
                     </div>
 
                     <div className="splash-nav-title">
-                        <h1>Child Labor</h1>
+                        <h1>Kids Work</h1>
                         <h3>Complete chores, earn money</h3>
                     </div>
 

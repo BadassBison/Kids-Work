@@ -4,3 +4,11 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+.dropdown-kids {
+    width: 100%;
+}
+
+.dropdown-kids-container {
+    margin-bottom: 10px;
+}
