@@ -24,7 +24,7 @@ class ChoreDisplay extends React.Component {
                     <Title title={chore.title} />
                     <ChoreDueDateDisplay date={chore.deadline}/>
                     <ChoreBodyDisplay body={chore.body} />
-                    <div className="title">{chore.amount}</div>
+                    <div className="title">${chore.amount}</div>
                 </div> 
             </div>
         )
