@@ -98,7 +98,7 @@ class SignUpForm extends React.Component {
                             <i className="fas fa-window-close"></i>
                     </button>
                     <div className="title-container">
-                        <Title title="Child Labor" />
+                        <Title title="Kids Work" />
                         <SubTitle subTitle="Sign Up" />
                     </div>
                     <form className="login-form" onSubmit={this.handleSubmit} onChange={this.handleChange}>

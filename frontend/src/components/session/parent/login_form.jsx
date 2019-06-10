@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
         if (this.state.isParent) {
             this.props.loginParent(user)
                 .then(() => {
-                    debugger
+                    // debugger
                     this.props.history.push('/parent');
                 });
             } else {
@@ -169,7 +169,7 @@ class LoginForm extends React.Component {
                         <i className="fas fa-window-close"></i>
                     </button>
                     <div className="title-container">
-                        <Title title="Child Labor" />
+                        <Title title="Kids Work" />
                         <SubTitle subTitle="Sign In" />
                     </div>
                     <div className="login-switch-container">
