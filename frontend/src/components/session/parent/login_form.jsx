@@ -17,6 +17,7 @@ class LoginForm extends React.Component {
             isParent: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
         this.toggleSwitch = this.toggleSwitch.bind(this);
     }
 
@@ -58,6 +59,22 @@ class LoginForm extends React.Component {
         this.props.closeModal();
     }
 
+    handleDemoSubmit(e) {
+        e.preventDefault();
+        if (this.state.isParent) {
+            this.props.demoLoginParent()
+                .then(() => {
+                    this.props.history.push('/parent');
+                });
+        } else {
+            this.props.demoLoginChild()
+                .then(() => {
+                    this.props.history.push('/child');
+                });
+        }
+        this.props.closeModal();
+    }
+
     toggleSwitch(e) {
         this.setState({
             isParent: !this.state.isParent
@@ -90,11 +107,11 @@ class LoginForm extends React.Component {
                         <UserField value={this.props.familyName} onChange={this.update("familyName")} placeholder="Family Name"/>
                         <PasswordField password={this.props.password} onChange={this.update("password")} placeholder="Password"/>
                         <SubmitField value="Sign In" />
-                        <button className="link-button"
-                            onClick={this.state.isParent ? this.props.demoLoginParent : this.props.demoLoginChild}>
-                            Demo Login
-                        </button>
                     </form>
+                    <button className="link-button"
+                        onClick={this.handleDemoSubmit}>
+                        Demo Login
+                        </button>
                 </div>
             </section>
         )
