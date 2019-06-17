@@ -16,28 +16,32 @@ class NavBar extends React.Component {
     }
 
     render() {
-        return (
-        
-            <nav className="navbar-container">
-                    <div className="logo-container">
-                        <Link
-                            to="/">
-                        <img className="navbar-logo" src={logo} alt=""/>
-                        </Link>
-                    </div>
-
-                    <div className="splash-nav-links-container">
-                        <button className="button is-success is-rounded chore-list-button"
-                            onClick={this.redirectToChores.bind(this)}>
-                            Chore List
-                        </button>
-                        <button className="button is-success is-rounded"
-                            onClick={() => this.props.logout()}>
-                            Logout
-                        </button>
-                    </div>
-            </nav>
-        )
+        if (this.props.loggedIn) {
+            return (
+            
+                <nav className="navbar-container">
+                        <div className="logo-container">
+                            <Link
+                                to="/">
+                            <img className="navbar-logo" src={logo} alt=""/>
+                            </Link>
+                        </div>
+    
+                        <div className="splash-nav-links-container">
+                            <button className="button is-success is-rounded chore-list-button"
+                                onClick={this.redirectToChores.bind(this)}>
+                                Chore List
+                            </button>
+                            <button className="button is-success is-rounded"
+                                onClick={() => this.props.logout()}>
+                                Logout
+                            </button>
+                        </div>
+                </nav>
+            )
+        } else {
+            return null
+        }
     }
 };
 

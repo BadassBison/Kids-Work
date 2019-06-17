@@ -5,7 +5,8 @@ import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({
-    currentUser: state.session.family
+    currentUser: state.session.family,
+    loggedIn: state.session.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({

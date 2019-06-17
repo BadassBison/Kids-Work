@@ -8,35 +8,38 @@ import kidsMoney from './images/kids-with-money.jpg';
 import './splash.css';
 
 const Splash = (props) => {
+    let nav = null
+    if (!props.loggedIn) {
+        nav = (<nav className="splash-nav-container">
+            <div className="splash-nav">
+                <div className="logo-container">
+                    <Link
+                        to="/">
+                        <img className="splash-logo" src={logo} alt="" />
+                    </Link>
+                </div>
+
+                <div className="splash-nav-title">
+                    <h1>Kids Work</h1>
+                    <h3>Complete chores, earn money</h3>
+                </div>
+
+
+                <div className="splash-nav-links-container">
+                    <button
+                        className="splash-nav-link"
+                        onClick={() => props.openModal({ modalType: 'login' })}
+                    ><p>Log In</p></button>
+                    <button
+                        className="splash-nav-link"
+                        onClick={() => props.openModal({ modalType: 'signup' })}
+                    >Sign Up</button>
+                </div>
+            </div>
+        </nav>) }
     return (
         <main className="splash-body">
-            <nav className="splash-nav-container">
-                <div className="splash-nav">
-                    <div className="logo-container">
-                        <Link 
-                            to="/">
-                            <img className="splash-logo" src={logo} alt=""/>
-                        </Link>
-                    </div>
-
-                    <div className="splash-nav-title">
-                        <h1>Child Labor</h1>
-                        <h3>Complete chores, earn money</h3>
-                    </div>
-
-                
-                    <div className="splash-nav-links-container">
-                        <button 
-                            className="splash-nav-link"
-                            onClick={() => props.openModal({ modalType: 'login'})}
-                            ><p>Log In</p></button>
-                        <button 
-                            className="splash-nav-link"
-                            onClick={() => props.openModal({ modalType: 'signup'})}
-                            >Sign Up</button>
-                    </div>
-                </div>
-            </nav>
+            {nav}
 
             <div className="splash-container">
                 <div className="columns splash-info-container">

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import  LoginForm from './login_form';
-import { loginChild, loginParent } from '../../../actions/session_actions';
+import { loginChild, loginParent, demoLoginChild, demoLoginParent } from '../../../actions/session_actions';
 import { closeModal } from '../../../actions/modal_actions';
 import {updateFilter } from '../../../actions/filter_actions';
 
@@ -12,6 +12,8 @@ import {updateFilter } from '../../../actions/filter_actions';
 const mapDispatchToProps = dispatch => ({
     loginChild: userData => dispatch(loginChild(userData)),
     loginParent: userData => dispatch(loginParent(userData)),
+    demoLoginChild: () => dispatch(demoLoginChild()),
+    demoLoginParent: () => dispatch(demoLoginParent()),
     closeModal: () => dispatch(closeModal()),
     updateFilter: filter => dispatch(updateFilter(filter))
 });

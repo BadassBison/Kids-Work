@@ -90,6 +90,10 @@ class LoginForm extends React.Component {
                         <UserField value={this.props.familyName} onChange={this.update("familyName")} placeholder="Family Name"/>
                         <PasswordField password={this.props.password} onChange={this.update("password")} placeholder="Password"/>
                         <SubmitField value="Sign In" />
+                        <button className="link-button"
+                            onClick={this.state.isParent ? this.props.demoLoginParent : this.props.demoLoginChild}>
+                            Demo Login
+                        </button>
                     </form>
                 </div>
             </section>

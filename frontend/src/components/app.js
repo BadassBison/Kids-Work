@@ -15,10 +15,10 @@ import NavBarContainer from './navbar/navbar_container';
 const App = () => (
     <>
         <ModalContainer />
-        <Switch>
-            <Route exact path="/" component={null} />
+        {/* <Switch>
+            <Route exact path="/" component={null} /> */}
             <Route path="/" component={NavBarContainer} />
-        </Switch>
+        {/* </Switch> */}
         <Switch>
             <ParentRoute exact path="/parent" component={ParentIndexPage}/>
             <ParentRoute exact path="/parent/dashboard" component={ParentDashBoardContainer}/>

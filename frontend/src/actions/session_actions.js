@@ -27,6 +27,32 @@ export const signup = (familyData) => dispatch => {
     ));
 };
 
+
+export const demoLoginParent = () => dispatch => {
+    return APIUtil.demoLoginParent().then(userData => {
+        const { token } = userData.data;
+        localStorage.setItem('jwtToken', token);
+        APIUtil.setAuthToken(token);
+        const decodedUser = jwt_decode(token);
+        dispatch(receiveUserLogin(decodedUser));
+    })
+        .catch(err => {
+            dispatch(receiveErrors(err.response.data));
+        });
+};
+
+export const demoLoginChild = () => dispatch => {
+    return APIUtil.demoLoginChild().then(userData => {
+        const { token } = userData.data;
+        localStorage.setItem('jwtToken', token);
+        APIUtil.setAuthToken(token);
+        const decodedUser = jwt_decode(token);
+        dispatch(receiveUserLogin(decodedUser));
+    })
+        .catch(err => {
+            dispatch(receiveErrors(err.response.data));
+        });
+};
 export const loginParent = (userData) => dispatch => {
     return APIUtil.loginParent(userData).then(userData => {
         const { token } = userData.data;

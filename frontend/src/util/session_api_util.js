@@ -19,3 +19,19 @@ export const loginParent = (userData) => {
 export const loginChild = (userData) => {
     return axios.post('/api/families/childLogin', userData);
 };
+
+export const demoLoginParent = () => {
+    return axios.post('/api/families/parentLogin', {
+        firstName: 'Molly',
+        familyName: 'Weasley',
+        password: 'castaspell'
+    });
+};
+
+export const demoLoginChild = () => {
+    return axios.post('/api/families/childLogin', {
+        firstName: 'Ron',
+        familyName: 'Weasley',
+        password: 'castaspell'
+    });
+};
