@@ -108,7 +108,11 @@ class LoginForm extends React.Component {
                         <PasswordField password={this.props.password} onChange={this.update("password")} placeholder="Password"/>
                         <SubmitField value="Sign In" />
                     </form>
-                    <button className="link-button"
+                    <br/>
+                    <p id="or">or</p>
+                    <br/>
+                    <button className="button is-info is-fullwidth"
+                        id = "button-demo"
                         onClick={this.handleDemoSubmit}>
                         Demo Login
                         </button>

@@ -13,3 +13,12 @@
 #create-chore-modal-button {
     margin-right: 20px;
 }
+
+#button-demo {
+    background-color: rgba(73, 226, 27, 0.925);
+}
+
+#or {
+    font-size: 32px;
+    text-align: center;
+}
