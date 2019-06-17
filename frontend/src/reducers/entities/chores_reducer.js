@@ -42,7 +42,7 @@ const choresReducer = (state = defaultState, action) => {
         case RECEIVE_CHORE:
             newState = merge({}, state);
             let chore = action.payload.data;
-            newState[chore.id] = chore;
+            newState[chore._id] = chore;
             return newState;
 
         default:

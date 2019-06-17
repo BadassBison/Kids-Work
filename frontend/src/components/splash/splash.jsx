@@ -24,7 +24,6 @@ const Splash = (props) => {
                     <h3>Complete chores, earn money</h3>
                 </div>
 
-
                 <div className="splash-nav-links-container">
                     <button
                         className="splash-nav-link"
@@ -77,6 +76,7 @@ const Splash = (props) => {
             </div>
         </main>
     );
+    
 };
 
 export default Splash;

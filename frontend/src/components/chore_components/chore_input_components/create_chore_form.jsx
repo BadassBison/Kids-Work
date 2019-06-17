@@ -100,10 +100,13 @@ class CreateChoreForm extends React.Component {
                   value={this.state.amount}
                   onChange={this.update("amount")}
                 />
-                <select onChange={this.update("childId")}>
-                  <option value="">Assign to child</option>
-                  {childOptions}
-                </select>
+                <div className="select dropdown-kids-container"> 
+                  <select className="dropdown-kids"
+                    onChange={this.update("childId")}>
+                    <option value="">Assign to child</option>
+                    {childOptions}
+                  </select>
+                </div>
                 <ChoreDueDate
                   value={this.state.dueDate}
                   onChange={this.update("dueDate")}
