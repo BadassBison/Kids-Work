@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ChildIndexHeader from './child_index_header_container';
 import ChildIndexBody from './child_index_body_container';
-import AvailableChores from "./available_chores";
+import AvailableChores from "./available_chores_container";
 import CurrentChores from "../page_components/current_chores_container";
 import MainLinks from "../page_components/main_links_container";
 import { Link } from 'react-router-dom';
