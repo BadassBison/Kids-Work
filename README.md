@@ -2,9 +2,7 @@
 
 ## Background & Overview
 
-Child Labor is a site for parents and children to use together. Parents post chores with bounties for their children to complete, and upon completion, that child receives the bounty. The bounty balance for each child can be used to teach children money manangement and the importance of hard work. This project was built with the intent to gamify chores at home and encourage fun means to accomplish work at home.
-
-This project was built over 5 days with a team of 4 developers.
+Kids Work is a site for parents and children to use together. Parents post chores with bounties for their children to complete, and upon completion, that child receives the bounty. The bounty balance for each child can be used to teach children money manangement and the importance of hard work. This project was built with the intent to gamify chores at home and encourage fun means to accomplish work at home.
 
 ## Technologies 
 
