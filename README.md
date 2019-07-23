@@ -1,4 +1,4 @@
-![color palette](images/logo.png)
+# Kids Work
 
 ## Background & Overview
 
